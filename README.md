@@ -17,6 +17,9 @@ Farmers get the produce marketplace, lots, quality, bidding, FPO and logistics t
 
 The Python server includes the authenticated API and admin console. The older Node server remains available for environments that require Node.js, but use Python for the complete local experience.
 
+## Permanent public hosting
+The GitHub repository is source code only; GitHub Pages cannot run the Python API and will cause login POST requests to fail. For a permanent public service, create a Render Web Service from `teamarena1/KIsan-link`, choose the `render.yaml` blueprint, and deploy. Render will provide a URL such as `https://kisanlink.onrender.com`. Add `GEMINI_API_KEY` in the Render environment settings, then share that Render URL. The service must be awake for the free plan to respond.
+
 Backend resources include `/api/markets`, `/api/buyers`, `/api/lots`, `/api/transactions`, `/api/bids`, `/api/assays`, `/api/grievances`, `/api/fpo-lots`, `/api/nwr`, `/api/profile`, `/api/chat`, and the admin-only `/api/admin/overview`. Existing data is migrated automatically into the separate JSON stores when the server starts.
 
 Administrators see a separate **Administrator Dashboard** with live tables for customer accounts, farmer lots, transactions, bids, quality assessments, grievances, FPO lots and e-NWR requests. The dashboard and `/api/admin/data` endpoint are restricted to users with the `admin` role.
