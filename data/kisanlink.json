@@ -1,0 +1,345 @@
+{
+  "lots": [
+    {
+      "id": "LOT-BC39FF95",
+      "crop": "Tomato",
+      "qty": "125 kg",
+      "quality": "Grade A",
+      "offer": "Awaiting",
+      "status": "Published"
+    },
+    {
+      "id": "LOT-1042",
+      "crop": "Tomato",
+      "qty": "5,000 kg",
+      "quality": "Grade A",
+      "offer": "₹27/kg",
+      "status": "Offer received"
+    },
+    {
+      "id": "LOT-1038",
+      "crop": "Onion",
+      "qty": "3,000 kg",
+      "quality": "Grade A",
+      "offer": "₹33/kg",
+      "status": "Bidding"
+    },
+    {
+      "id": "LOT-1021",
+      "crop": "Soybean",
+      "qty": "8,000 kg",
+      "quality": "FAQ",
+      "offer": "₹51/kg",
+      "status": "Sold"
+    }
+  ],
+  "transactions": [
+    [
+      "TXN-54A463A1",
+      "GreenHarvest Foods",
+      "₹1,31,500",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-420D82EC",
+      "Verified Buyer",
+      "₹1,31,500",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-625A201C",
+      "Verified Buyer",
+      "₹1,31,500",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-2D7A7898",
+      "GreenHarvest Foods",
+      "₹1,31,500",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-B8FBF93A",
+      "GreenHarvest Foods",
+      "₹1,31,500",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-6D8C43A9",
+      "Verified Buyer",
+      "₹1,31,500",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-1002",
+      "GreenHarvest Foods",
+      "₹1,35,000",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-0998",
+      "CityMart Institutions",
+      "₹98,000",
+      "Paid ✓",
+      "Delivered",
+      "18 Aug"
+    ]
+  ],
+  "bids": [],
+  "assays": [],
+  "grievances": [
+    {
+      "id": "GRV-09094EFF",
+      "reference": "TXN-1002",
+      "type": "Quality not as promised",
+      "description": "quality not good",
+      "evidence": "1398046.jpg",
+      "status": "SUBMITTED"
+    }
+  ],
+  "fpoLots": [],
+  "nwrRequests": [
+    {
+      "id": "NWR-618BA52D",
+      "lotId": "LOT-1042",
+      "status": "REQUESTED"
+    }
+  ],
+  "profile": {
+    "name": "Kru",
+    "accountType": "FPO Member",
+    "district": "Nagpur",
+    "state": "Maharashtra ",
+    "crops": "Soybean"
+  },
+  "users": [
+    {
+      "id": "USR-FARMER",
+      "name": "Vansh Thakre",
+      "email": "farmer@kisanlink.local",
+      "password": "26c07fc7be1668f8ea7e3801d4ffdbf33de487a593a69028936ec49f2c89f6ab",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-ADMIN",
+      "name": "KisanLink Admin",
+      "email": "admin@kisanlink.local",
+      "password": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+      "role": "admin"
+    },
+    {
+      "id": "USR-5CC86BD8",
+      "name": "New Kisan User",
+      "email": "newuser211224@example.com",
+      "password": "b5692500175fad6bb2b306aa20ff58423c79b130ef310fb3caa924e0f28bc61d",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-98DDF988",
+      "name": "chaitanya",
+      "email": "chaitanyameshram2006@gmail.com",
+      "password": "7f394aefbebc1342ffa546a0707a1d1567b3cc183f5e341ae0a79adee2d71121",
+      "role": "admin"
+    },
+    {
+      "id": "USR-8D384058",
+      "name": "Krutika Urade",
+      "email": "krutikaurade15@gmail.com",
+      "password": "843ba4e60a54324e5d9bb588b9e4821279ed9197d8992cffe02a19aab723ae35",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-B3A0E154",
+      "name": "Vansh Thakre",
+      "email": "vanshthakre1919@gmail.com",
+      "password": "f414f701ee8f7f1f3eaecbd7e575d685dd4b71c65419de37ddc8b2d54c2412cb",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-A90CE1A3",
+      "name": "Samruddhi Zamre",
+      "email": "samruddhizamre@gmail.com",
+      "password": "a05dd45e547a9363dbeed4eac4b389ed61a0e03bccaaec03571baf2c299cbe39",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-5F436F3E",
+      "name": "Rohan Waghmare",
+      "email": "rohanwaghmare532@gmail.com",
+      "password": "9faa927acf0ff5fa9fa982d681d0c6ea5e0679825fc2dbcf5db7ea3b4a6dc250",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-800B3ACE",
+      "name": "Test Buyer",
+      "email": "buyer134522@example.com",
+      "password": "e547bd13228250dfb4c7df1d1ebb78cfd9f2ada56ebb0c425d35829dd3ac4ae8",
+      "role": "buyer"
+    },
+    {
+      "id": "USR-9D46E7B4",
+      "name": "Rohan Waghmare",
+      "email": "rohanwaghmare12t@gmail.com",
+      "password": "5f3fc1f3b7602f197f2a46a6603ccfb57f77eb9d72dbc4edc8d55ae4d51a7543",
+      "role": "buyer"
+    }
+  ],
+  "markets": [
+    {
+      "market": "Nagpur APMC",
+      "crop": "Tomato",
+      "price": 25,
+      "distance": 15,
+      "arrival": 120,
+      "trend": 4.8,
+      "quality": "Grade A/B"
+    },
+    {
+      "market": "Kamptee Market",
+      "crop": "Tomato",
+      "price": 23,
+      "distance": 25,
+      "arrival": 85,
+      "trend": 2.2,
+      "quality": "Grade A/B"
+    },
+    {
+      "market": "Wardha APMC",
+      "crop": "Tomato",
+      "price": 27,
+      "distance": 70,
+      "arrival": 62,
+      "trend": 6.4,
+      "quality": "Grade A"
+    },
+    {
+      "market": "Nagpur APMC",
+      "crop": "Onion",
+      "price": 31,
+      "distance": 15,
+      "arrival": 210,
+      "trend": -1.3,
+      "quality": "Grade A/B"
+    },
+    {
+      "market": "Katol Market",
+      "crop": "Onion",
+      "price": 34,
+      "distance": 48,
+      "arrival": 95,
+      "trend": 3.8,
+      "quality": "Grade A"
+    },
+    {
+      "market": "Hingna Market",
+      "crop": "Soybean",
+      "price": 48,
+      "distance": 24,
+      "arrival": 75,
+      "trend": 5.1,
+      "quality": "FAQ"
+    }
+  ],
+  "buyers": [
+    {
+      "name": "GreenHarvest Foods",
+      "type": "Processor",
+      "crop": "Tomato",
+      "price": 27,
+      "qty": "5,000 kg",
+      "distance": 62,
+      "reliability": 96,
+      "quality": "Grade A",
+      "payment": "2 days"
+    },
+    {
+      "name": "FreshBasket Retail",
+      "type": "Retailer",
+      "crop": "Tomato",
+      "price": 26,
+      "qty": "3,000 kg",
+      "distance": 35,
+      "reliability": 93,
+      "quality": "Grade A",
+      "payment": "3 days"
+    },
+    {
+      "name": "CityMart Institutions",
+      "type": "Institutional",
+      "crop": "Onion",
+      "price": 33,
+      "qty": "7,000 kg",
+      "distance": 42,
+      "reliability": 98,
+      "quality": "Grade A",
+      "payment": "1 day"
+    }
+  ],
+  "farmerUsers": [
+    {
+      "id": "USR-FARMER",
+      "name": "Vansh Thakre",
+      "email": "farmer@kisanlink.local",
+      "password": "26c07fc7be1668f8ea7e3801d4ffdbf33de487a593a69028936ec49f2c89f6ab",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-5CC86BD8",
+      "name": "New Kisan User",
+      "email": "newuser211224@example.com",
+      "password": "b5692500175fad6bb2b306aa20ff58423c79b130ef310fb3caa924e0f28bc61d",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-8D384058",
+      "name": "Krutika Urade",
+      "email": "krutikaurade15@gmail.com",
+      "password": "843ba4e60a54324e5d9bb588b9e4821279ed9197d8992cffe02a19aab723ae35",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-B3A0E154",
+      "name": "Vansh Thakre",
+      "email": "vanshthakre1919@gmail.com",
+      "password": "f414f701ee8f7f1f3eaecbd7e575d685dd4b71c65419de37ddc8b2d54c2412cb",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-A90CE1A3",
+      "name": "Samruddhi Zamre",
+      "email": "samruddhizamre@gmail.com",
+      "password": "a05dd45e547a9363dbeed4eac4b389ed61a0e03bccaaec03571baf2c299cbe39",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-5F436F3E",
+      "name": "Rohan Waghmare",
+      "email": "rohanwaghmare532@gmail.com",
+      "password": "9faa927acf0ff5fa9fa982d681d0c6ea5e0679825fc2dbcf5db7ea3b4a6dc250",
+      "role": "farmer"
+    }
+  ],
+  "buyerUsers": [
+    {
+      "id": "USR-800B3ACE",
+      "name": "Test Buyer",
+      "email": "buyer134522@example.com",
+      "password": "e547bd13228250dfb4c7df1d1ebb78cfd9f2ada56ebb0c425d35829dd3ac4ae8",
+      "role": "buyer"
+    }
+  ]
+}

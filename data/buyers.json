@@ -1,0 +1,47 @@
+{
+  "users": [
+    {
+      "id": "USR-800B3ACE",
+      "name": "Test Buyer",
+      "email": "buyer134522@example.com",
+      "password": "e547bd13228250dfb4c7df1d1ebb78cfd9f2ada56ebb0c425d35829dd3ac4ae8",
+      "role": "buyer"
+    }
+  ],
+  "buyers": [
+    {
+      "name": "GreenHarvest Foods",
+      "type": "Processor",
+      "crop": "Tomato",
+      "price": 27,
+      "qty": "5,000 kg",
+      "distance": 62,
+      "reliability": 96,
+      "quality": "Grade A",
+      "payment": "2 days"
+    },
+    {
+      "name": "FreshBasket Retail",
+      "type": "Retailer",
+      "crop": "Tomato",
+      "price": 26,
+      "qty": "3,000 kg",
+      "distance": 35,
+      "reliability": 93,
+      "quality": "Grade A",
+      "payment": "3 days"
+    },
+    {
+      "name": "CityMart Institutions",
+      "type": "Institutional",
+      "crop": "Onion",
+      "price": 33,
+      "qty": "7,000 kg",
+      "distance": 42,
+      "reliability": 98,
+      "quality": "Grade A",
+      "payment": "1 day"
+    }
+  ],
+  "bids": []
+}

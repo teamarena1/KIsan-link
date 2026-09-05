@@ -1,0 +1,89 @@
+{
+  "users": [
+    {
+      "id": "USR-FARMER",
+      "name": "Vansh Thakre",
+      "email": "farmer@kisanlink.local",
+      "password": "26c07fc7be1668f8ea7e3801d4ffdbf33de487a593a69028936ec49f2c89f6ab",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-5CC86BD8",
+      "name": "New Kisan User",
+      "email": "newuser211224@example.com",
+      "password": "b5692500175fad6bb2b306aa20ff58423c79b130ef310fb3caa924e0f28bc61d",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-8D384058",
+      "name": "Krutika Urade",
+      "email": "krutikaurade15@gmail.com",
+      "password": "843ba4e60a54324e5d9bb588b9e4821279ed9197d8992cffe02a19aab723ae35",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-B3A0E154",
+      "name": "Vansh Thakre",
+      "email": "vanshthakre1919@gmail.com",
+      "password": "f414f701ee8f7f1f3eaecbd7e575d685dd4b71c65419de37ddc8b2d54c2412cb",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-A90CE1A3",
+      "name": "Samruddhi Zamre",
+      "email": "samruddhizamre@gmail.com",
+      "password": "a05dd45e547a9363dbeed4eac4b389ed61a0e03bccaaec03571baf2c299cbe39",
+      "role": "farmer"
+    },
+    {
+      "id": "USR-5F436F3E",
+      "name": "Rohan Waghmare",
+      "email": "rohanwaghmare532@gmail.com",
+      "password": "9faa927acf0ff5fa9fa982d681d0c6ea5e0679825fc2dbcf5db7ea3b4a6dc250",
+      "role": "farmer"
+    }
+  ],
+  "profile": {
+    "name": "Kru",
+    "accountType": "FPO Member",
+    "district": "Nagpur",
+    "state": "Maharashtra ",
+    "crops": "Soybean"
+  },
+  "lots": [
+    {
+      "id": "LOT-BC39FF95",
+      "crop": "Tomato",
+      "qty": "125 kg",
+      "quality": "Grade A",
+      "offer": "Awaiting",
+      "status": "Published"
+    },
+    {
+      "id": "LOT-1042",
+      "crop": "Tomato",
+      "qty": "5,000 kg",
+      "quality": "Grade A",
+      "offer": "₹27/kg",
+      "status": "Offer received"
+    },
+    {
+      "id": "LOT-1038",
+      "crop": "Onion",
+      "qty": "3,000 kg",
+      "quality": "Grade A",
+      "offer": "₹33/kg",
+      "status": "Bidding"
+    },
+    {
+      "id": "LOT-1021",
+      "crop": "Soybean",
+      "qty": "8,000 kg",
+      "quality": "FAQ",
+      "offer": "₹51/kg",
+      "status": "Sold"
+    }
+  ],
+  "assays": [],
+  "fpoLots": []
+}

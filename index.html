@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>किसान लिंक - KisanLink | Agricultural Marketplace</title>
+<meta name="description" content="KisanLink agricultural marketplace for farmers, verified buyers, quality assurance, logistics and secure transactions.">
+<style>
+:root{
+  --gov-blue:#0b4da0; --gov-accent:#f59e0b; --bg:#f8fafc; --card:#ffffff;
+  --ink:#07203b; --muted:#5b6b7b; --line:#e6eef8; --shadow:0 6px 18px rgba(3,37,76,.06);
+  --success:#0b8a3e; --danger:#c53030;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+button,input,select{font:inherit} button{cursor:pointer}
+.gov-banner{display:flex;align-items:center;gap:12px;padding:6px 18px;background:#fff;border-bottom:3px solid var(--gov-blue)}
+.gov-flag{display:flex;gap:2px;height:28px;align-items:center}
+.gov-flag span{display:block;width:38px;height:8px}
+.gov-flag .saffron{background:#ff9933}
+.gov-flag .white{background:#fff;border:1px solid #eee}
+.gov-flag .green{background:#138808}
+.gov-title{font-weight:700;color:var(--gov-blue);font-size:14px}
+.app{display:flex;min-height:calc(100vh - 42px)}
+.sidebar{width:255px;background:var(--card);color:var(--ink);padding:20px 14px;position:fixed;inset:42px auto 0 0;z-index:20;border-right:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;padding:8px 10px 18px;font-weight:700;font-size:18px;color:var(--gov-blue)}
+.brand-mark{width:40px;height:40px;border-radius:4px;border:2px solid var(--gov-blue);display:grid;place-items:center;color:var(--gov-blue);font-size:18px;background:transparent}
+.nav{display:grid;gap:6px}
+.nav button{border:0;background:transparent;color:var(--muted);text-align:left;padding:10px 12px;border-radius:4px;display:flex;align-items:center;gap:11px;border-left:3px solid transparent}
+.nav button:hover,.nav button.active{background:transparent;color:var(--gov-blue);border-left-color:var(--gov-blue);font-weight:700}
+.side-note{position:absolute;bottom:18px;left:16px;right:16px;background:#f1f7ff;padding:12px;border-radius:4px;font-size:12px;color:var(--muted);border:1px solid var(--line)}
+.main{margin-left:255px;width:calc(100% - 255px)}
+.topbar{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:42px;z-index:10}
+.location{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:14px}.location b{color:var(--ink)}
+.top-actions{display:flex;align-items:center;gap:10px}.pill{border:1px solid var(--line);background:#fff;border-radius:4px;padding:8px 11px;color:var(--muted)}
+.profile{display:flex;align-items:center;gap:9px}.avatar{width:34px;height:34px;border-radius:50%;background:#e9f2ff;display:grid;place-items:center;color:var(--gov-blue);font-weight:800}
+.content{padding:26px;max-width:1200px;margin:auto}
+.page{display:none}.page.active{display:block}
+.hero{background:linear-gradient(90deg,var(--gov-blue),#0b6fb0);color:white;border-radius:6px;padding:22px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.hero h1{font-size:26px;margin:0 0 6px;font-weight:700}
+.hero p{margin:0;color:rgba(255,255,255,.9);max-width:720px;line-height:1.5}
+.searchbox{display:flex;gap:8px;margin-top:14px;max-width:700px}.searchbox input{flex:1;border:1px solid var(--line);border-radius:3px;padding:11px 12px;outline:0;background:#fff}
+.primary{border:0;background:var(--gov-blue);color:#fff;font-weight:700;border-radius:3px;padding:10px 14px}
+.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,1fr);margin:18px 0}.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px}
+.stat-label{color:var(--muted);font-size:13px}.stat-value{font-size:22px;font-weight:800;margin:6px 0}.up{color:#0b8a3e;font-size:12px}.down{color:#c53030;font-size:12px}
+.two{grid-template-columns:1.5fr 1fr}.three{grid-template-columns:repeat(3,1fr)}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:20px 0 10px}.section-head h2{font-size:17px;margin:0}.section-head span{font-size:13px;color:var(--muted)}
+table{width:100%;border-collapse:collapse}th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}th{color:var(--muted);font-weight:700;background:#f7fbff}tr:last-child td{border-bottom:0}
+.badge{display:inline-flex;align-items:center;padding:6px 8px;border-radius:3px;font-size:12px;font-weight:700;border:1px solid var(--line);background:transparent}
+.green{color:#0b7038}.amber{color:#b55d00}.blue{color:var(--gov-blue)}.gray{color:#475569}.red{color:#991b1b}
+.recommend{border:1px solid #e6f0ff;background:linear-gradient(180deg,#fff,#f8fbff);padding:16px;border-radius:6px}.rec-title{display:flex;justify-content:space-between;gap:10px}.price{font-size:24px;font-weight:800;color:var(--gov-blue)}
+.progress{height:8px;background:#eef3fa;border-radius:4px;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--gov-blue),#1e90ff)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;padding:9px 12px;border-radius:3px;font-weight:700;color:var(--gov-blue)}.btn:hover{border-color:var(--gov-blue)}.btn.primary-btn{background:var(--gov-blue);color:#fff;border-color:var(--gov-blue)}.btn.danger{color:#b91c1c}
+.filters{display:flex;gap:10px;flex-wrap:wrap}.filters input,.filters select,.form input,.form select,.form textarea{border:1px solid var(--line);border-radius:4px;padding:9px 10px;background:#fff;outline:none}.filters input:focus,.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--gov-blue);box-shadow:0 0 0 3px rgba(11,77,160,.08)}
+.market-grid{grid-template-columns:repeat(3,1fr)}.buyer-grid{grid-template-columns:repeat(3,1fr)}
+.market-card h3,.buyer-card h3{margin:6px 0}.market-card p,.buyer-card p{font-size:13px;color:var(--muted);margin:6px 0}.market-price{font-size:20px;font-weight:800;color:var(--gov-blue)}
+.iconbox{width:40px;height:40px;border-radius:4px;background:#f5faff;display:grid;place-items:center;color:var(--gov-blue)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.form label{font-size:12px;font-weight:700;color:#475569;display:block;margin-bottom:5px}.form textarea{min-height:95px;resize:vertical}.full{grid-column:1/-1}
+.modal{display:none;position:fixed;inset:0;background:rgba(3,37,76,.55);z-index:50;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{background:#fff;border-radius:6px;max-width:650px;width:100%;max-height:90vh;overflow:auto;padding:20px}.modal-head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#f1f5f9;border-radius:4px;width:34px;height:34px}
+.login-screen{position:fixed;inset:0;background:linear-gradient(135deg,#eef6ff,#fff);display:grid;place-items:center;z-index:100;padding:20px}.login-screen.hidden{display:none}.login-box{background:#fff;border:1px solid var(--line);border-top:5px solid var(--gov-blue);padding:28px;width:min(420px,100%);box-shadow:var(--shadow)}.login-box h1{margin:0 0 6px;color:var(--gov-blue);font-size:25px}.login-box p{color:var(--muted);font-size:13px}.login-box label{display:block;font-size:12px;font-weight:700;margin:14px 0 5px}.login-box input{width:100%;padding:11px;border:1px solid var(--line);border-radius:4px}.login-error{color:var(--danger);font-size:13px;min-height:18px;margin-top:10px}.auth-mode{display:flex;gap:6px;margin:14px 0;border-bottom:1px solid var(--line);padding-bottom:10px}.auth-mode button{flex:1;border:0;background:#f4f8fd;color:var(--muted);padding:9px;border-radius:4px;font-weight:700}.auth-mode button.active{background:var(--gov-blue);color:#fff}.register-fields{display:none}.register-fields.open{display:block}
+.admin-mode{--gov-blue:#17324d;--bg:#eef2f5}.admin-mode .gov-banner{border-bottom-color:#c47a28;background:#f9f5ef}.admin-mode .gov-title{color:#17324d}.admin-mode .brand{color:#17324d}.admin-mode .brand-mark{border-color:#c47a28;color:#c47a28}.admin-mode .nav button.active,.admin-mode .nav button:hover{color:#17324d;border-left-color:#c47a28}.admin-mode .admin-data-grid .card{border-top:3px solid #c47a28}.admin-mode .admin-data-grid h3{color:#17324d}.admin-mode .farmer-nav{display:none}.table-scroll{overflow-x:auto}.table-scroll table{min-width:440px}
+.buyer-mode{--gov-blue:#176b68;--bg:#f0f8f7}.buyer-mode .gov-banner{border-bottom-color:#176b68}.buyer-mode .gov-title{color:#176b68}.buyer-mode .brand,.buyer-mode .nav button.active,.buyer-mode .nav button:hover{color:#176b68}.buyer-mode .brand-mark{border-color:#176b68;color:#176b68}.buyer-mode .farmer-nav,.buyer-mode #adminNav{display:none!important}.buyer-mode .buyer-nav{display:flex}.admin-mode .buyer-nav{display:none!important}.buyer-nav{display:none}
+.toast{position:fixed;right:22px;bottom:22px;background:var(--gov-blue);color:#fff;padding:13px 16px;border-radius:6px;box-shadow:var(--shadow);display:none;z-index:80}.toast.show{display:block}
+.chat-toggle{position:fixed;right:22px;bottom:22px;width:52px;height:52px;border:0;border-radius:50%;background:var(--gov-blue);color:#fff;font-size:22px;box-shadow:0 8px 22px rgba(3,37,76,.22);z-index:70}.chat-panel{display:none;position:fixed;right:22px;bottom:86px;width:330px;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 14px 35px rgba(3,37,76,.18);z-index:70;overflow:hidden}.chat-panel.open{display:block}.chat-head{display:flex;align-items:center;justify-content:space-between;background:var(--gov-blue);color:#fff;padding:13px 15px}.chat-head h3{margin:0;font-size:15px}.chat-close{border:0;background:transparent;color:#fff;font-size:20px}.chat-body{padding:12px;max-height:300px;overflow:auto;background:#f8fbff}.chat-message{padding:9px 11px;border-radius:8px;margin-bottom:9px;font-size:13px;line-height:1.4;max-width:90%}.chat-message.bot{background:#fff;border:1px solid var(--line)}.chat-message.user{background:#dcecff;margin-left:auto;color:var(--ink)}.chat-quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.chat-quick button{border:1px solid #b9d3f2;background:#fff;color:var(--gov-blue);border-radius:15px;padding:6px 8px;font-size:11px}.chat-form{display:flex;gap:6px;padding:10px;border-top:1px solid var(--line)}.chat-form input{min-width:0;flex:1;border:1px solid var(--line);border-radius:4px;padding:8px}.chat-form button{border:0;border-radius:4px;background:var(--gov-blue);color:#fff;padding:8px 11px}@media(max-width:760px){.chat-panel{right:12px;bottom:78px;width:calc(100% - 24px)}.chat-toggle{right:14px;bottom:14px}}
+.chart{height:230px;display:flex;align-items:end;gap:10px;padding:15px 5px 30px;margin-bottom:4px}.bar{flex:1;background:linear-gradient(180deg,#1e90ff,#0b4da0);border-radius:6px 6px 0 0;position:relative;min-width:18px}.bar small{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:10px;color:#647067;white-space:nowrap}
+.info-box,.success-box{padding:10px 12px;border-radius:4px;font-size:13px;line-height:1.4}.info-box{background:#f1f7ff;border:1px solid #d8e8fa;color:var(--ink)}.success-box{background:#effaf2;border:1px solid #c8e6c9;color:#275c3a}
+.map{height:240px;border-radius:6px;background:linear-gradient(180deg,#f8fbff,#fff);position:relative;overflow:hidden}
+.pin{position:absolute;width:14px;height:14px;border-radius:50% 50% 50% 0;background:var(--gov-blue);transform:rotate(-45deg)}.pin:after{content:"";position:absolute;width:6px;height:6px;background:#fff;border-radius:50%;left:4px;top:4px}
+.pin-label{position:absolute;background:#fff;padding:6px 8px;border-radius:4px;font-size:11px;box-shadow:0 4px 10px rgba(0,0,0,.06);white-space:nowrap}
+.empty{padding:30px;text-align:center;color:var(--muted)}
+.mobile-menu{display:none;border:0;background:#fff}
+.footer-note{font-size:12px;color:var(--muted);margin-top:20px}
+@media(max-width:1050px){.stats{grid-template-columns:repeat(2,1fr)}.market-grid,.buyer-grid,.three{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}
+@media(max-width:760px){
+ .sidebar{transform:translateX(-100%);transition:.25s}.sidebar.open{transform:translateX(0)}.main{margin-left:0;width:100%}.mobile-menu{display:block}.topbar{padding:0 15px}.content{padding:15px}.stats,.market-grid,.buyer-grid,.three,.form-grid{grid-template-columns:1fr}.hero h1{font-size:20px}.searchbox{flex-direction:column}.searchbox .primary{height:44px}.top-actions .pill{display:none}
+}
+</style>
+</head>
+<body>
+<section class="login-screen" id="loginScreen">
+  <form class="login-box" onsubmit="login(event)">
+    <div class="brand" style="padding:0 0 16px"><div class="brand-mark">🌾</div><div>KisanLink<small style="display:block;font-size:11px;color:var(--muted);font-weight:600">Secure agricultural marketplace</small></div></div>
+    <div class="auth-mode"><button type="button" id="signinMode" class="active" onclick="setAuthMode('signin')">Sign in</button><button type="button" id="registerMode" onclick="setAuthMode('register')">Create account</button></div>
+    <label for="authRole">Account type</label><select id="authRole" onchange="setAuthRole(this.value)"><option value="farmer">Farmer</option><option value="buyer">Buyer</option><option value="admin">Administrator</option></select>
+    <h1 id="authTitle">Sign in</h1><p id="authSubtitle">Use your registered KisanLink account to access your marketplace records.</p>
+    <div class="register-fields" id="registerFields"><label for="registerName">Full name</label><input id="registerName" autocomplete="name" placeholder="Your full name"></div>
+    <label for="loginEmail">Email</label><input id="loginEmail" type="email" autocomplete="username" required placeholder="you@example.com">
+    <label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Enter password">
+    <div class="login-error" id="loginError"></div><button class="btn primary-btn" id="authSubmit" style="width:100%;margin-top:8px">Sign in securely</button>
+  </form>
+</section>
+  <div class="gov-banner">
+    <div class="gov-flag"><span class="saffron"></span><span class="white"></span><span class="green"></span></div>
+    <div class="gov-title" id="govTitle">KisanLink Agricultural Marketplace</div>
+  </div>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-mark">🌾</div><div>KisanLink<small style="display:block;font-size:11px;color:var(--muted);font-weight:600">Agricultural Marketplace</small></div></div>
+  <div class="nav">
+    <button class="active farmer-nav" data-page="dashboard">⌂ <span>Dashboard</span></button>
+    <button class="farmer-nav" data-page="markets">▣ <span>Market Prices</span></button>
+    <button class="farmer-nav" data-page="buyers">♙ <span>Verified Buyers</span></button>
+    <button class="farmer-nav" data-page="lots">▤ <span>My Lots</span></button>
+    <button class="farmer-nav" data-page="quality">✓ <span>Quality Assay</span></button>
+    <button class="farmer-nav" data-page="bidding">↗ <span>Live Bidding</span></button>
+    <button class="farmer-nav" data-page="fpo">▥ <span>FPO Hub</span></button>
+    <button class="farmer-nav" data-page="logistics">⌁ <span>Logistics & Storage</span></button>
+    <button class="farmer-nav" data-page="transactions">₹ <span>Transactions</span></button>
+    <button class="farmer-nav" data-page="grievance">⚑ <span>Grievance</span></button>
+    <button class="farmer-nav" data-page="profile">⚙ <span>Profile</span></button>
+    <button data-page="admin" id="adminNav" style="display:none">▦ <span>Administrator Dashboard</span></button>
+    <button class="buyer-nav" data-page="buyerDashboard" id="buyerDashboardNav">⌂ <span>Buyer Dashboard</span></button>
+    <button class="buyer-nav" data-page="buyerLots">▤ <span>Available Lots</span></button>
+    <button class="buyer-nav" data-page="buyerBids">↗ <span>My Bids</span></button>
+    <button class="buyer-nav" data-page="buyerTransactions">₹ <span>Purchases</span></button>
+  </div>
+  <div class="side-note"><b>Secure marketplace</b><br>Your lots, offers and transactions are managed through your KisanLink account.</div>
+</aside>
+
+<main class="main">
+<header class="topbar">
+  <div style="display:flex;align-items:center;gap:12px;width:100%">
+    <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+    <div class="location">📍 <span>Your location:</span> <b id="locationText">Nagpur, Maharashtra</b></div>
+  </div>
+  <div class="top-actions">
+    <select class="pill" id="lang" onchange="setLanguage(this.value)" title="Change language"><option value="en">English</option><option value="hi">हिन्दी</option></select>
+    <button class="pill" onclick="showToast('No new notifications')" title="Notifications">🔔</button>
+    <div class="profile"><div class="avatar" id="userAvatar">किसान</div><span id="userLabel" style="font-size:13px;font-weight:600">Farmer Profile</span><button class="pill" onclick="logout()">Sign out</button></div>
+  </div>
+</header>
+
+<div class="content">
+<section class="page active" id="dashboard">
+  <div class="hero">
+    <h1 id="heroTitle">Sell smarter. Earn better.</h1>
+    <p id="heroSub">One place to compare mandi prices, verified buyers, quality requirements, transport and storage — then get a smart selling recommendation.</p>
+    <div class="searchbox">
+      <input id="quickCrop" list="cropList" placeholder="Search a crop, e.g. onion, tomato, soybean">
+      <datalist id="cropList"><option>Onion</option><option>Tomato</option><option>Soybean</option><option>Wheat</option><option>Cotton</option><option>Orange</option></datalist>
+      <button class="primary" onclick="quickSearch()">Find best selling option →</button>
+    </div>
+  </div>
+
+  <div class="grid stats">
+    <div class="card"><div class="stat-label">Best current price</div><div class="stat-value">₹2,850/q</div><div class="up">▲ 6.2% vs yesterday</div><button class="btn" style="margin-top:10px" onclick="openPage('markets')">View trends</button></div>
+    <div class="card"><div class="stat-label">Nearby buyers</div><div class="stat-value">18</div><div class="up">7 verified active bids</div><button class="btn" style="margin-top:10px" onclick="openNearestBuyer()">Find nearest buyer</button></div>
+    <div class="card"><div class="stat-label">Potential extra value</div><div class="stat-value">₹18,400</div><div class="up">AI estimate for your lot</div><button class="btn" style="margin-top:10px" onclick="openPage('logistics')">Get tips</button></div>
+    <div class="card"><div class="stat-label">Active lots</div><div class="stat-value" id="lotCount">3</div><div class="up">2 awaiting offers</div></div>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <div class="section-head" style="margin-top:0"><h2>✅ Best Selling Option</h2><span>Updated just now</span></div>
+      <div class="recommend">
+        <div class="rec-title"><div><span class="badge green">PERFECT MATCH • 94%</span><h3 style="margin:10px 0 4px">GreenHarvest Foods</h3><div style="font-size:13px;color:var(--muted)">Wants Tomato • Grade A • 5,000 kg</div></div><div style="text-align:right"><div class="price">₹27/kg</div><small style="color:#0a6a3a;font-weight:600">₹3 more than local mandi</small></div></div>
+        <div class="info-box">💡 This buyer is verified, reliable, and offers the best price for your produce.</div>
+        <div class="grid three" style="margin-top:14px">
+          <div><small class="stat-label">You Get</small><b style="font-size:18px;color:var(--gov-blue)">₹1,31,500</b></div>
+          <div><small class="stat-label">Delivery Cost</small><b style="font-size:16px">₹3,500</b></div>
+          <div><small class="stat-label">Buyer Trust</small><b style="font-size:16px;color:var(--success)">96%</b></div>
+        </div>
+        <div class="actions" style="margin-top:16px;gap:10px"><button class="btn primary-btn" onclick="openOffer('GreenHarvest Foods','₹27/kg')" style="flex:1">✓ Accept Offer</button><button class="btn" onclick="openPage('buyers')" style="flex:1">Compare More</button></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-head" style="margin-top:0"><h2>📈 Price Chart</h2><span>7 days • Tomato</span></div>
+      <div class="chart" aria-label="Tomato price trend">
+        <div class="bar" style="height:42%"><small>Mon</small></div><div class="bar" style="height:50%"><small>Tue</small></div><div class="bar" style="height:46%"><small>Wed</small></div><div class="bar" style="height:62%"><small>Thu</small></div><div class="bar" style="height:68%"><small>Fri</small></div><div class="bar" style="height:75%"><small>Sat</small></div><div class="bar" style="height:84%"><small>Today</small></div>
+      </div>
+      <div class="success-box">🤖 <b>AI Forecast:</b> Price may reach ₹28–29/kg in 3 days if supply remains same.</div>
+    </div>
+  </div>
+
+  <div class="section-head"><h2>📍 Market Prices Nearby</h2><span>Compare local mandis</span></div>
+  <div class="grid market-grid" id="dashboardMarkets"></div>
+
+  <div class="section-head"><h2>💡 Key Factors for Better Earnings</h2><span>Things that affect your profit</span></div>
+  <div class="grid three">
+    <div class="card">
+      <div style="text-align:center;margin-bottom:10px;font-size:28px">📊</div>
+      <div class="stat-label">Buyer Demand</div>
+      <div class="stat-value" style="color:var(--success)">High</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:8px">12 buyers actively looking for tomato</div>
+    </div>
+    <div class="card">
+      <div style="text-align:center;margin-bottom:10px;font-size:28px">✓</div>
+      <div class="stat-label">Quality Grade</div>
+      <div class="stat-value">Grade A</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:8px">91% confidence in assessment</div>
+    </div>
+    <div class="card">
+      <div style="text-align:center;margin-bottom:10px;font-size:28px">🏪</div>
+      <div class="stat-label">Storage Benefit</div>
+      <div class="stat-value">₹8,000</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:8px">Estimated profit after storage costs</div>
+    </div>
+  </div>
+
+  <div class="section-head"><h2>🎯 How KisanLink Works</h2><span>Simple 3-step process</span></div>
+  <div class="grid three">
+    <div class="card" style="text-align:center">
+      <div style="font-size:36px;margin-bottom:12px">1️⃣</div>
+      <h3>Discover</h3>
+      <p style="color:var(--muted);font-size:13px">Check prices, demand, and buyer requirements in your area.</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div style="font-size:36px;margin-bottom:12px">2️⃣</div>
+      <h3>Create & Sell</h3>
+      <p style="color:var(--muted);font-size:13px">List your produce and get offers from verified buyers.</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div style="font-size:36px;margin-bottom:12px">3️⃣</div>
+      <h3>Complete Safely</h3>
+      <p style="color:var(--muted);font-size:13px">Arrange transport and payment with full transaction record.</p>
+    </div>
+  </div>
+  <div class="footer-note">✅ <strong>Verified Platform:</strong> All buyers are registered with government verification. All transactions are documented digitally. Your rights are protected by law.</div>
+</section>
+
+<section class="page" id="markets">
+  <div class="section-head" style="margin-top:0"><h2>📊 Compare Market Prices</h2><span>Find the best mandi rates</span></div>
+  <div class="card">
+    <div class="filters">
+      <input id="marketSearch" placeholder="Search crop or market..." oninput="renderMarkets()" style="flex:1;min-width:200px">
+      <select id="marketCrop" onchange="renderMarkets()" style="min-width:150px"><option value="">All crops</option><option>Tomato</option><option>Onion</option><option>Soybean</option><option>Wheat</option><option>Cotton</option></select>
+      <select id="marketSort" onchange="renderMarkets()" style="min-width:150px"><option value="price">Highest Price</option><option value="distance">Nearest Market</option><option value="arrival">Low Supply (Best Prices)</option></select>
+    </div>
+  </div>
+  <div class="grid market-grid" id="marketsGrid" style="margin-top:16px"></div>
+  <div class="grid two" style="margin-top:20px">
+    <div class="card"><div class="section-head" style="margin-top:0"><h2>📈 7-Day Price Forecast</h2><span>AI Prediction Model</span></div><div class="chart" style="height:230px"><div class="bar" style="height:45%"><small>6d ago</small></div><div class="bar" style="height:49%"><small>5d ago</small></div><div class="bar" style="height:52%"><small>4d ago</small></div><div class="bar" style="height:58%"><small>3d ago</small></div><div class="bar" style="height:65%"><small>2d ago</small></div><div class="bar" style="height:70%"><small>Yesterday</small></div><div class="bar" style="height:79%"><small>Today</small></div><div class="bar" style="height:87%"><small>+3 days</small></div></div></div>
+    <div class="card"><div class="section-head" style="margin-top:0"><h2>🏪 Wait or Sell Now?</h2></div><p style="font-size:13px;color:var(--muted)">Should you store and wait for better prices, or sell now?</p><div class="recommend"><b>💡 Recommended: WAIT 2–3 days</b><p style="font-size:13px;margin-bottom:0">Expected gain: ₹2.4/kg • Storage cost: ₹0.8/kg • Net profit: ₹1.6/kg</p></div></div>
+  </div>
+</section>
+
+<section class="page" id="buyers">
+  <div class="section-head" style="margin-top:0"><h2>🤝 Find Verified Buyers</h2><span>Connect with trusted companies</span></div>
+  <div class="card">
+    <div class="filters">
+      <input id="buyerSearch" placeholder="Search buyer name, crop, or type..." oninput="renderBuyers()" style="flex:1;min-width:200px">
+      <select id="buyerType" onchange="renderBuyers()" style="min-width:150px"><option value="">All buyer types</option><option>Processor</option><option>Retailer</option><option>Institutional</option><option>Wholesaler</option></select>
+      <button class="btn primary-btn" onclick="openNearestBuyer()" style="white-space:nowrap">📍 Show Nearest</button>
+    </div>
+  </div>
+  <div class="info-box">✅ <strong>All buyers verified:</strong> Government registered • Payment guaranteed • Quality disputes handled.</div>
+  <div class="grid buyer-grid" id="buyersGrid" style="margin-top:16px"></div>
+</section>
+
+<section class="page" id="lots">
+  <div class="section-head" style="margin-top:0"><h2>📦 My Produce Lots</h2><button class="btn primary-btn" onclick="openModal('lotModal')">+ Create New Lot</button></div>
+  <div class="info-box">💡 Create a lot to list your produce for sale. Buyers will submit offers based on quantity, quality, and availability.</div>
+  <div class="card"><table><thead><tr><th>Lot ID</th><th>Crop</th><th>Quantity</th><th>Grade</th><th>Best Offer</th><th>Status</th><th>Action</th></tr></thead><tbody id="lotsTable"></tbody></table></div>
+</section>
+
+<section class="page" id="quality">
+  <div class="section-head" style="margin-top:0"><h2>✓ Quality Assessment</h2><span>Build buyer confidence in your produce</span></div>
+  <div class="info-box">🎯 Get AI-based quality assessment by uploading photos of your produce. This helps buyers trust your lot and can increase your price by 5-10%.</div>
+  <div class="grid two">
+    <div class="card form"><h3>📸 Get Quality Rating</h3><form onsubmit="submitAssay(event)"><label>Lot ID (from your lots)</label><input id="assayLot" required placeholder="e.g., LOT-1042" style="margin-bottom:12px"><label>Crop Type</label><select id="assayCrop" style="margin-bottom:12px"><option>Tomato</option><option>Onion</option><option>Soybean</option><option>Wheat</option></select><label>Upload Clear Photos</label><input id="assayImages" type="file" accept="image/*" multiple style="margin-bottom:12px"><label>Quality Notes (optional)</label><textarea id="assayNotes" placeholder="Example: Ripe, fresh, no damage, good color..."></textarea><button class="btn primary-btn" style="margin-top:12px;width:100%">🤖 Run Quality Check</button></form></div>
+    <div class="card"><h3>✅ Quality Certificate</h3><div class="recommend"><span class="badge green">AI ASSESSMENT COMPLETE</span><h3 style="margin:10px 0 4px">LOT-1042 • Tomato</h3><p style="color:var(--muted);font-size:13px">Buyers will see this quality profile and can make better offers.</p><div class="grid three" style="margin-top:12px"><div><small class="stat-label">Grade</small><b style="font-size:20px">A</b></div><div><small class="stat-label">Confidence</small><b style="font-size:20px">91%</b></div><div><small class="stat-label">Damage</small><b style="font-size:20px">2%</b></div></div><div style="margin-top:14px"><span class="badge" style="background:#e8f5e9;border-color:#c8e6c9">Size: Medium</span> <span class="badge" style="background:#e8f5e9;border-color:#c8e6c9">Color: Red</span> <span class="badge" style="background:#e8f5e9;border-color:#c8e6c9">Moisture: 8%</span></div></div><button class="btn" style="margin-top:14px;width:100%" onclick="showToast('Quality profile shared with buyers')">✓ Share With Buyers</button></div>
+  </div>
+</section>
+
+<section class="page" id="bidding">
+  <div class="section-head" style="margin-top:0"><h2>↗ Live Bidding</h2><span>Real-time offers from buyers</span></div>
+  <div class="grid two">
+    <div class="card"><div class="section-head" style="margin-top:0"><h3>🔄 LOT-1042 • Tomato</h3><span style="color:var(--danger)">Closes in 02:14:36</span></div><p style="color:var(--muted);font-size:13px">📦 5,000 kg • ✓ Grade A • Quality verified</p><table><thead><tr><th>Buyer Name</th><th>Price Offered</th><th>Trust Score</th></tr></thead><tbody><tr><td>GreenHarvest Foods</td><td><b>₹27/kg</b></td><td>⭐ 96%</td></tr><tr><td>FreshBasket Retail</td><td><b>₹26/kg</b></td><td>⭐ 93%</td></tr><tr><td>CityMart Institutions</td><td><b>₹25/kg</b></td><td>⭐ 98%</td></tr></tbody></table><form class="filters" style="margin-top:14px;gap:0" onsubmit="placeBid(event)"><input id="bidAmount" type="number" min="28" required placeholder="Place your minimum bid (₹/kg)" style="flex:1;margin-right:8px"><button class="btn primary-btn">✓ Bid Now</button></form></div>
+    <div class="card"><h3>💡 How Winning Bid Works</h3><div class="success-box"><b>Current Best Option:</b><div class="price" style="margin:8px 0">₹1,31,500</div><p style="font-size:13px;margin:8px 0">GreenHarvest Foods • ₹27/kg<br>Minus transport ₹3,500 = <b>Your net profit</b></p></div><p style="font-size:13px;color:var(--muted);margin-top:12px">KisanLink selects the best bid based on:</p><ul style="font-size:12px;color:var(--muted);margin:8px 0;padding-left:16px"><li>Price offered</li><li>Buyer reliability & payment history</li><li>Quality requirements match</li><li>Actual money in your hand (net realization)</li></ul><button class="btn" style="margin-top:14px;width:100%" onclick="showToast('Bid history downloaded')">📥 Download Bid History</button></div>
+  </div>
+</section>
+
+<section class="page" id="fpo">
+  <div class="section-head" style="margin-top:0"><h2>🌾 FPO Group Trading</h2><button class="btn primary-btn" onclick="aggregateLot()">+ Form New Group Lot</button></div>
+  <div class="info-box">📢 Group multiple farmers' produce together to get volume discounts and better prices. Perfect for FPO members.</div>
+  <div class="grid three"><div class="card"><div style="font-size:28px;text-align:center;margin-bottom:10px">👥</div><div class="stat-label">Member Farmers Ready</div><div class="stat-value">28</div><div style="font-size:12px;color:var(--muted);margin-top:6px">Combined 8,400 kg available</div></div><div class="card"><div style="font-size:28px;text-align:center;margin-bottom:10px">💰</div><div class="stat-label">Price Uplift</div><div class="stat-value">₹1.80/kg</div><div style="font-size:12px;color:var(--muted);margin-top:6px">Extra benefit from bulk selling</div></div><div class="card"><div style="font-size:28px;text-align:center;margin-bottom:10px">🎯</div><div class="stat-label">Active Buyer Interest</div><div class="stat-value">15,000 kg</div><div style="font-size:12px;color:var(--muted);margin-top:6px">3 major buyers want to buy</div></div></div>
+  <div class="card" style="margin-top:16px"><h3>🔄 Current Group Lots</h3><table><thead><tr><th>Crop</th><th>Member Farmers</th><th>Total Volume</th><th>Target Buyer</th><th>Status</th></tr></thead><tbody><tr><td><strong>Tomato</strong></td><td>12</td><td>5,000 kg</td><td>GreenHarvest Foods</td><td><span class="badge amber">Collecting</span></td></tr><tr><td><strong>Onion</strong></td><td>8</td><td>3,400 kg</td><td>CityMart Institutions</td><td><span class="badge green">Ready to Bid</span></td></tr></tbody></table></div>
+</section>
+
+<section class="page" id="logistics">
+  <div class="section-head" style="margin-top:0"><h2>🚚 Transport & Storage</h2><span>Find the best & cheapest option</span></div>
+  <div class="grid two">
+    <div class="card">
+      <h3>🚛 Available Transport Options</h3>
+      <div class="info-box">We compare all available truck owners. GPS tracking ensures safety of your produce.</div>
+      <div class="card" style="border-left:4px solid var(--success);margin-top:12px"><b>Shree Agro Logistics</b> ⭐ <strong style="color:var(--success)">Best Value</strong><p style="margin:6px 0;font-size:13px">10-ton truck • 62 km • GPS tracking included</p><strong style="font-size:18px;color:var(--gov-blue)">₹3,500</strong></div>
+      <div class="card" style="margin-top:10px"><b>FarmMove Express</b><p style="margin:6px 0;font-size:13px">12-ton truck • 67 km • GPS tracking</p><strong style="font-size:18px;color:var(--gov-blue)">₹3,900</strong></div>
+      <div class="card" style="margin-top:10px"><b>Rural Freight Co.</b><p style="margin:6px 0;font-size:13px">8-ton truck • 60 km • Shared load (cheaper)</p><strong style="font-size:18px;color:var(--gov-blue)">₹3,200</strong></div>
+    </div>
+    <div class="card">
+      <h3>🏪 Storage Warehouses Nearby</h3>
+      <div class="map">
+        <div class="pin" style="left:27%;top:40%"></div><div class="pin-label" style="left:29%;top:31%">AgriCold • 4 km</div>
+        <div class="pin" style="left:66%;top:62%"></div><div class="pin-label" style="left:68%;top:53%">FPO Store • 9 km</div>
+        <div class="pin" style="left:48%;top:23%"></div><div class="pin-label" style="left:50%;top:14%">Warehouse • 6 km</div>
+      </div>
+      <div class="actions" style="margin-top:12px"><button class="btn primary-btn" style="flex:1" onclick="showToast('Storage comparison opened')">Compare Storage</button><button class="btn" style="flex:1" onclick="showToast('Route optimization started')">Optimize Route</button></div>
+    </div>
+    <div class="card form"><h3>💰 Calculate Your Earnings</h3><div class="form-grid"><div><label>How much you have (kg)</label><input id="calcQty" type="number" value="5000" oninput="calculateProfit()" style="margin-bottom:8px"></div><div><label>Sale price (₹/kg)</label><input id="calcPrice" type="number" value="27" oninput="calculateProfit()" style="margin-bottom:8px"></div><div><label>Transport cost (₹)</label><input id="calcTransport" type="number" value="3500" oninput="calculateProfit()" style="margin-bottom:8px"></div><div><label>Storage cost (₹)</label><input id="calcStorage" type="number" value="0" oninput="calculateProfit()" style="margin-bottom:8px"></div></div><div class="recommend" style="margin-top:15px"><span class="stat-label">💵 Your Net Profit</span><div class="price" id="netProfit">₹1,31,500</div><small style="color:var(--muted)">After all costs deducted</small></div></div>
+  </div>
+  <div class="card" style="margin-top:16px"><div class="section-head" style="margin-top:0"><h3>📋 e-NWR (Electronic Warehouse Receipt)</h3><span>Store safely with bank loan facility</span></div><p style="font-size:13px;color:var(--muted);margin-bottom:12px">Store your produce without losing ownership. Use e-NWR receipt to get loans from banks for better prices.</p><div class="grid three"><div><b>AgriCold Warehouse</b><p style="font-size:12px;color:var(--muted);margin:6px 0">4 km away • ₹0.80/kg/day • WDRA certified</p></div><div><b>How It Works</b><p style="font-size:12px;color:var(--muted);margin:6px 0">Store produce → Get e-NWR → Borrow money → Wait for better prices → Sell & repay</p></div><div><button class="btn primary-btn" onclick="requestNwr()" style="width:100%">📄 Get e-NWR</button></div></div></div>
+</section>
+
+<section class="page" id="transactions">
+  <div class="section-head" style="margin-top:0"><h2>💰 My Transactions</h2><span>Complete record of all sales</span></div>
+  <div class="info-box">✅ Digital record of all your sales. Download receipts and get payment proof instantly.</div>
+  <div class="card"><table><thead><tr><th>Transaction ID</th><th>Buyer</th><th>Amount</th><th>Payment Status</th><th>Delivery Status</th><th>Date</th></tr></thead><tbody id="transactionsTable"></tbody></table></div>
+</section>
+
+<section class="page" id="grievance">
+  <div class="section-head" style="margin-top:0"><h2>⚠️ Report Issue or Dispute</h2><span>Get quick resolution with evidence</span></div>
+  <div class="info-box">📋 <strong>Not sure if there's an issue?</strong> If payment is late, quality is disputed, quantity is wrong, or transport has damage - report it here with photos. KisanLink will help resolve it quickly and fairly.</div>
+  <div class="grid two">
+    <div class="card form"><h3>📝 File a Complaint</h3><form onsubmit="submitGrievance(event)"><label>Transaction or Lot ID</label><input id="gId" required placeholder="e.g., TXN-1002 or LOT-1042" style="margin-bottom:12px"><label>What's the problem?</label><select id="gType" style="margin-bottom:12px"><option>Payment is delayed</option><option>Quality not as promised</option><option>Wrong quantity received</option><option>Damage during transport</option><option>Other issue</option></select><label>Describe the problem</label><textarea id="gDesc" required placeholder="Tell us exactly what happened..."></textarea><label>Attach proof (photo/document)</label><input id="gEvidence" type="file" accept="image/*,.pdf" style="margin-bottom:12px"><button class="btn primary-btn" style="width:100%">📤 Submit Complaint</button></form></div>
+    <div class="card"><h3>📋 My Open Cases</h3><div id="cases"><div class="card" style="margin-top:10px"><span class="badge amber">UNDER REVIEW</span><b style="display:block;margin-top:8px">GRV-203 • Payment delayed</b><small style="color:var(--muted)">Last updated today • Assigned to resolution officer • Expected reply in 24 hours</small></div></div></div>
+  </div>
+</section>
+
+<section class="page" id="profile">
+  <div class="section-head" style="margin-top:0"><h2>⚙️ Your Profile & Verification</h2></div>
+  <div class="grid two">
+    <div class="card form"><h3>👤 Profile Information</h3><div class="form-grid"><div><label>Full Name</label><input id="profileName" value="Vansh Thakre" style="margin-bottom:12px"></div><div><label>Account Type</label><select id="profileType" style="margin-bottom:12px"><option>Individual Farmer</option><option>FPO Member</option></select></div><div><label>District/Region</label><input id="profileDistrict" value="Nagpur" style="margin-bottom:12px"></div><div><label>State</label><input id="profileState" value="Maharashtra" style="margin-bottom:12px"></div><div class="full"><label>Crops You Grow</label><input id="profileCrops" value="Tomato, Onion, Soybean" style="margin-bottom:12px"></div></div><button class="btn primary-btn" style="width:100%" onclick="saveProfile()">✓ Save Changes</button></div>
+    <div class="card"><h3>🔐 Trust & Safety</h3><div class="success-box"><span class="badge green">✓ KYC Verified</span> <span class="badge blue">📱 Phone Verified</span></div><hr style="border:0;border-top:1px solid var(--line);margin:12px 0"><p style="font-size:13px;color:var(--muted)">Complete more successful sales and build positive buyer reviews to improve your trust score and get better offers.</p><div style="display:flex;justify-content:space-between;margin-top:12px"><b>Your Trust Score</b><b style="color:var(--gov-blue);font-size:18px">82/100</b></div><div class="progress" style="margin-top:8px"><span style="width:82%"></span></div><p style="font-size:12px;color:var(--muted);margin-top:12px">Higher score = Better buyer confidence = More offers</p></div>
+  </div>
+</section>
+<section class="page" id="admin">
+  <div class="section-head" style="margin-top:0"><h2>▦ Administrator Dashboard</h2><span>Customer and marketplace operations</span></div>
+  <div class="grid three" id="adminStats"></div>
+  <div class="grid two admin-data-grid" style="margin-top:16px">
+    <div class="card"><h3>All customer accounts</h3><div class="table-scroll"><table><thead><tr><th>Name</th><th>Email</th><th>Role</th></tr></thead><tbody id="adminUsers"></tbody></table></div></div>
+    <div class="card"><h3>All farmer lots</h3><div class="table-scroll"><table><thead><tr><th>Lot</th><th>Crop</th><th>Quantity</th><th>Status</th></tr></thead><tbody id="adminLots"></tbody></table></div></div>
+    <div class="card"><h3>Transactions</h3><div class="table-scroll"><table><thead><tr><th>ID</th><th>Buyer</th><th>Amount</th><th>Status</th></tr></thead><tbody id="adminTransactions"></tbody></table></div></div>
+    <div class="card"><h3>Bids</h3><div class="table-scroll"><table><thead><tr><th>Bid</th><th>Lot</th><th>Amount</th><th>Date</th></tr></thead><tbody id="adminBids"></tbody></table></div></div>
+    <div class="card"><h3>Quality assessments</h3><div class="table-scroll"><table><thead><tr><th>ID</th><th>Lot</th><th>Crop</th><th>Grade</th></tr></thead><tbody id="adminAssays"></tbody></table></div></div>
+    <div class="card"><h3>Grievances</h3><div class="table-scroll"><table><thead><tr><th>ID</th><th>Reference</th><th>Issue</th><th>Status</th></tr></thead><tbody id="adminGrievances"></tbody></table></div></div>
+    <div class="card"><h3>FPO lots</h3><div class="table-scroll"><table><thead><tr><th>ID</th><th>Lot</th><th>Status</th></tr></thead><tbody id="adminFpoLots"></tbody></table></div></div>
+    <div class="card"><h3>e-NWR requests</h3><div class="table-scroll"><table><thead><tr><th>ID</th><th>Lot</th><th>Status</th></tr></thead><tbody id="adminNwr"></tbody></table></div></div>
+  </div>
+</section>
+<section class="page" id="buyerDashboard">
+  <div class="hero" style="background:linear-gradient(90deg,#176b68,#24958d)"><h1>Buy smarter with KisanLink</h1><p>Find quality-assured produce, place competitive bids, and manage your purchases from one buyer workspace.</p><div class="actions" style="margin-top:16px"><button class="btn primary-btn" onclick="openPage('buyerLots')">Browse available lots</button><button class="btn" onclick="openPage('buyerBids')">Review my bids</button></div></div>
+  <div class="grid three" style="margin-top:18px"><div class="card"><div class="stat-label">Available lots</div><div class="stat-value" id="buyerLotCount">0</div><div class="up">Ready for buyer offers</div></div><div class="card"><div class="stat-label">My active bids</div><div class="stat-value" id="buyerBidCount">0</div><div class="up">Bids awaiting decision</div></div><div class="card"><div class="stat-label">Purchases</div><div class="stat-value" id="buyerTxnCount">0</div><div class="up">Transaction records</div></div></div>
+  <div class="section-head"><h2>Recommended produce</h2><span>Quality-assured farmer lots</span></div><div class="grid three" id="buyerRecommendedLots"></div>
+</section>
+<section class="page" id="buyerLots">
+  <div class="section-head" style="margin-top:0"><h2>Available Farmer Lots</h2><span>Review produce and submit bids</span></div><div class="card"><div class="filters"><input id="buyerLotSearch" placeholder="Search crop or lot..." oninput="renderBuyerLots()" style="flex:1"><select id="buyerLotStatus" onchange="renderBuyerLots()"><option value="">All statuses</option><option>Published</option><option>Offer received</option><option>Bidding</option></select></div></div><div class="grid three" id="buyerLotsGrid" style="margin-top:16px"></div>
+</section>
+<section class="page" id="buyerBids">
+  <div class="section-head" style="margin-top:0"><h2>My Bids</h2><span>Track your offers to farmers</span></div><div class="card"><table><thead><tr><th>Bid ID</th><th>Lot</th><th>Amount</th><th>Created</th></tr></thead><tbody id="buyerBidsTable"></tbody></table></div>
+</section>
+<section class="page" id="buyerTransactions">
+  <div class="section-head" style="margin-top:0"><h2>My Purchases</h2><span>Buyer transaction records</span></div><div class="card"><table><thead><tr><th>Transaction</th><th>Seller/Buyer</th><th>Amount</th><th>Payment</th><th>Delivery</th></tr></thead><tbody id="buyerTransactionsTable"></tbody></table></div>
+</section>
+</div>
+</main>
+</div>
+
+<div class="modal" id="offerModal"><div class="modal-box"><div class="modal-head"><h2>✅ Buyer Offer Details</h2><button class="close" onclick="closeModal('offerModal')">×</button></div><div id="offerBody"></div></div></div>
+
+<div class="modal" id="lotModal"><div class="modal-box"><div class="modal-head"><h2>📦 Create New Produce Lot</h2><button class="close" onclick="closeModal('lotModal')">×</button></div><form class="form" onsubmit="createLot(event)"><div class="form-grid"><div><label>What are you selling?</label><select id="lotCrop" style="margin-bottom:12px"><option>Tomato</option><option>Onion</option><option>Soybean</option><option>Wheat</option><option>Cotton</option></select></div><div><label>How much (kg)?</label><input id="lotQty" type="number" min="1" required value="5000" style="margin-bottom:12px"></div><div><label>Quality Grade</label><select id="lotQuality" style="margin-bottom:12px"><option>Grade A (Best)</option><option>Grade B (Good)</option><option>Grade C (Fair)</option></select></div><div><label>Expected Price (₹/kg)</label><input id="lotPrice" type="number" min="1" required value="27" style="margin-bottom:12px"></div><div class="full"><label>When can you deliver?</label><input id="lotDate" type="date" style="margin-bottom:12px"></div></div><div class="info-box">💡 Tip: Be honest about quantity and quality. This helps buyers trust you and send better offers.</div><button class="btn primary-btn" style="margin-top:15px;width:100%;padding:12px">✓ Publish Lot & Get Offers</button></form></div></div>
+<div class="toast" id="toast"></div>
+<button class="chat-toggle" aria-label="Open KisanLink assistant" onclick="toggleChat()">💬</button>
+<section class="chat-panel" id="chatPanel" aria-label="KisanLink assistant">
+  <div class="chat-head"><h3>💬 KisanLink Assistant</h3><button class="chat-close" aria-label="Close assistant" onclick="toggleChat()">×</button></div>
+  <div class="chat-body" id="chatBody"><div class="chat-message bot">नमस्ते! 👋 I can help you find any feature you need. What would you like help with?</div><div class="chat-quick"><button onclick="chatAction('nearest buyer')">🔍 Nearest Buyer</button><button onclick="chatAction('market prices')">📊 Market Prices</button><button onclick="chatAction('quality assay')">✓ Quality Check</button><button onclick="chatAction('live bidding')">↗ Live Bids</button><button onclick="chatAction('logistics')">🚚 Transport</button><button onclick="chatAction('grievance')">⚠️ Report Issue</button></div></div>
+  <form class="chat-form" onsubmit="sendChat(event)"><input id="chatInput" placeholder="Ask anything..." autocomplete="off"><button>Send</button></form>
+</section>
+
+<script>
+let markets=[
+ {market:"Nagpur APMC",crop:"Tomato",price:25,distance:15,arrival:120,trend:4.8,quality:"Grade A/B"},
+ {market:"Kamptee Market",crop:"Tomato",price:23,distance:25,arrival:85,trend:2.2,quality:"Grade A/B"},
+ {market:"Wardha APMC",crop:"Tomato",price:27,distance:70,arrival:62,trend:6.4,quality:"Grade A"},
+ {market:"Nagpur APMC",crop:"Onion",price:31,distance:15,arrival:210,trend:-1.3,quality:"Grade A/B"},
+ {market:"Katol Market",crop:"Onion",price:34,distance:48,arrival:95,trend:3.8,quality:"Grade A"},
+ {market:"Hingna Market",crop:"Soybean",price:48,distance:24,arrival:75,trend:5.1,quality:"FAQ"},
+ {market:"Umred Market",crop:"Wheat",price:26,distance:43,arrival:140,trend:1.9,quality:"FAQ"},
+ {market:"Kalmeshwar Market",crop:"Cotton",price:72,distance:39,arrival:52,trend:7.1,quality:"Grade A"}
+];
+let buyers=[
+ {name:"GreenHarvest Foods",type:"Processor",crop:"Tomato",price:27,qty:"5,000 kg",distance:62,reliability:96,quality:"Grade A",payment:"2 days"},
+ {name:"FreshBasket Retail",type:"Retailer",crop:"Tomato",price:26,qty:"3,000 kg",distance:35,reliability:93,quality:"Grade A",payment:"3 days"},
+ {name:"MahaAgro Wholesale",type:"Wholesaler",crop:"Tomato",price:25,qty:"10,000 kg",distance:18,reliability:90,quality:"Grade A/B",payment:"4 days"},
+ {name:"Vidarbha Foods",type:"Processor",crop:"Soybean",price:51,qty:"15,000 kg",distance:84,reliability:95,quality:"FAQ",payment:"2 days"},
+ {name:"CityMart Institutions",type:"Institutional",crop:"Onion",price:33,qty:"7,000 kg",distance:42,reliability:98,quality:"Grade A",payment:"1 day"},
+ {name:"RuralLink Traders",type:"Wholesaler",crop:"Cotton",price:74,qty:"20,000 kg",distance:55,reliability:92,quality:"Grade A",payment:"3 days"}
+];
+let lots=JSON.parse(localStorage.getItem("kl_lots")||"null")||[
+ {id:"LOT-1042",crop:"Tomato",qty:"5,000 kg",quality:"Grade A",offer:"₹27/kg",status:"Offer received"},
+ {id:"LOT-1038",crop:"Onion",qty:"3,000 kg",quality:"Grade A",offer:"₹33/kg",status:"Bidding"},
+ {id:"LOT-1021",crop:"Soybean",qty:"8,000 kg",quality:"FAQ",offer:"₹51/kg",status:"Sold"}
+];
+let txns=[
+ ["TXN-1002","GreenHarvest Foods","₹1,35,000","Pending","Pickup scheduled","Today"],
+ ["TXN-0998","CityMart Institutions","₹98,000","Paid ✓","Delivered","18 Aug"],
+ ["TXN-0984","Vidarbha Foods","₹4,08,000","Paid ✓","Delivered","12 Aug"],
+ ["TXN-0971","RuralLink Traders","₹5,92,000","Paid ✓","Delivered","08 Aug"]
+];
+let bids=[];
+let currentUserRole="";
+
+function qs(id){return document.getElementById(id)}
+const chatHistory=[]
+async function apiRequest(path, options={}){const response=await fetch(path,{credentials:"same-origin",headers:{"Content-Type":"application/json",...(options.headers||{})},...options});const raw=await response.text();let data={};if(raw.trim()){try{data=JSON.parse(raw)}catch(error){throw new Error(`Server returned invalid response (HTTP ${response.status})`)}}if(!response.ok)throw new Error(data.error||`Request failed (HTTP ${response.status})`);return data}
+function applyRole(user){currentUserRole=user.role;document.body.classList.toggle("admin-mode",user.role==="admin");document.body.classList.toggle("buyer-mode",user.role==="buyer");qs("govTitle").textContent=user.role==="admin"?"KisanLink Administration":user.role==="buyer"?"KisanLink Buyer Network":"KisanLink Agricultural Marketplace";qs("userLabel").textContent=user.name+" ("+user.role+")";qs("userAvatar").textContent=user.role==="admin"?"A":user.role==="buyer"?"B":"किसान";qs("adminNav").style.display=user.role==="admin"?"flex":"none"}
+async function loadState(){try{const state=await apiRequest("/api/state");lots=state.lots||lots;txns=state.transactions||txns;bids=state.bids||[];markets=state.markets||markets;buyers=state.buyers||buyers;localStorage.setItem("kl_lots",JSON.stringify(lots));renderDashboardMarkets();renderMarkets();renderBuyers();renderLots();renderTransactions();if(state.profile){qs("profileName").value=state.profile.name||"";qs("profileType").value=state.profile.accountType||"Individual Farmer";qs("profileDistrict").value=state.profile.district||"";qs("profileState").value=state.profile.state||"";qs("profileCrops").value=state.profile.crops||""}}catch(error){console.info("Connected data service unavailable:",error.message)}}
+function setAuthRole(role){if(role==="admin"&&qs("registerFields").classList.contains("open")){setAuthMode("signin")}qs("loginError").textContent=""}
+function setAuthMode(mode){const register=mode==="register";qs("signinMode").classList.toggle("active",!register);qs("registerMode").classList.toggle("active",register);qs("registerFields").classList.toggle("open",register);qs("authTitle").textContent=register?"Create your account":"Sign in";qs("authSubtitle").textContent=register?"Join KisanLink as a farmer or buyer.":"Choose your account type and sign in.";qs("authSubmit").textContent=register?"Create account":"Sign in securely";qs("loginError").textContent="";if(register&&qs("authRole").value==="admin")qs("authRole").value="farmer"}
+async function login(event){event.preventDefault();qs("loginError").textContent="";const register=qs("registerFields").classList.contains("open");try{const data=await apiRequest(register?"/api/register":"/api/login",{method:"POST",body:JSON.stringify({name:qs("registerName").value,email:qs("loginEmail").value,password:qs("loginPassword").value,role:qs("authRole").value})});const user=data.user;qs("loginScreen").classList.add("hidden");applyRole(user);await loadState();openPage(user.role==="admin"?"admin":user.role==="buyer"?"buyerDashboard":"dashboard")}catch(error){qs("loginError").textContent=error.message}}
+async function bootAuth(){try{const session=await apiRequest("/api/me");if(session.authenticated){applyRole(session.user);qs("loginScreen").classList.add("hidden");await loadState();openPage(session.user.role==="admin"?"admin":session.user.role==="buyer"?"buyerDashboard":"dashboard")}}catch(error){console.info("Authentication server unavailable",error.message)}}
+async function logout(){await fetch("/api/logout",{method:"POST"});location.reload()}
+function toggleChat(){qs("chatPanel").classList.toggle("open");if(qs("chatPanel").classList.contains("open"))qs("chatInput").focus()}
+function addChatMessage(text,type){const body=qs("chatBody");body.insertAdjacentHTML("beforeend",`<div class="chat-message ${type}">${text}</div>`);body.scrollTop=body.scrollHeight}
+async function chatAction(query) {
+  addChatMessage(query, "user");
+
+  const normalized = query.toLowerCase();
+  let response = "";
+
+  if (
+    normalized.includes("nearest") ||
+    normalized.includes("buyer")
+  ) {
+    openNearestBuyer();
+    response = "I opened Verified Buyers and sorted them by distance.";
+  } else if (normalized.includes("market") || normalized.includes("price") || normalized.includes("mandi")) {
+    openPage("markets");
+    response = "I opened Market Prices so you can compare nearby markets.";
+  } else if (normalized.includes("quality")) {
+    openPage("quality");
+    response = "I opened Quality Assay for your digital quality profile.";
+  } else if (
+    normalized.includes("bidding") ||
+    normalized.includes("bid")
+  ) {
+    openPage("bidding");
+    response = "I opened Live Bidding for your active lot.";
+  } else if (
+    normalized.includes("logistic") ||
+    normalized.includes("storage")
+  ) {
+    openPage("logistics");
+    response = "I opened Logistics & Storage to compare transport and net realization.";
+  } else if (
+    normalized.includes("grievance") ||
+    normalized.includes("dispute")
+  ) {
+    openPage("grievance");
+    response = "I opened Grievance & Dispute Support.";
+  }
+
+  if (response) {
+    addChatMessage(response, "bot");
+    return;
+  }
+
+  const pending = "assistant-pending";
+  addChatMessage("Thinking...", pending);
+
+  try {
+    chatHistory.push({role:"user",text:query});
+    const result = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: query,
+        history: chatHistory.slice(-8)
+      })
+    });
+
+    const responseText = await result.text();
+
+    let data = {};
+    if (responseText.trim()) {
+      try {
+        data = JSON.parse(responseText);
+      } catch (parseError) {
+        throw new Error(
+          `Server returned invalid JSON (HTTP ${result.status}): ${responseText.slice(0, 200)}`
+        );
+      }
+    }
+
+    if (!result.ok) {
+      throw new Error(
+        data.error || `Chat server returned HTTP ${result.status}`
+      );
+    }
+
+    const reply=data.reply||"I could not generate a reply.";
+    chatHistory.push({role:"model",text:reply});
+    addChatMessage(reply,"bot");
+
+  } catch (error) {
+    console.error("Chat error:", error);
+
+    const message = error.message.includes("GEMINI_API_KEY")
+      ? "Live AI is not configured on this server. Use the Market Prices shortcut or start the server with GEMINI_API_KEY set."
+      : "I could not reach the AI service right now. Please try again or use one of the feature shortcuts.";
+    addChatMessage(message, "bot");
+  } finally {
+    qs("chatBody")
+      .querySelector("." + pending)
+      ?.remove();
+  }
+}
+function sendChat(e){e.preventDefault();const input=qs("chatInput");const query=input.value.trim();if(!query)return;input.value="";chatAction(query)}
+function openPage(page){if(page==="admin"&&currentUserRole!=="admin"){showToast("Administrator access required");return}if(page.startsWith("buyer")&&currentUserRole!=="buyer"){showToast("Buyer access required");return}document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));qs(page).classList.add("active");document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));if(page==="markets")renderMarkets();if(page==="buyers")renderBuyers();if(page==="lots")renderLots();if(page==="transactions")renderTransactions();if(page==="admin")renderAdmin();if(page==="buyerDashboard")renderBuyerDashboard();if(page==="buyerLots")renderBuyerLots();if(page==="buyerBids")renderBuyerBids();if(page==="buyerTransactions")renderBuyerTransactions();window.scrollTo({top:0,behavior:"smooth"});if(innerWidth<760)qs("sidebar").classList.remove("open")}
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>openPage(b.dataset.page));
+function toggleSidebar(){qs("sidebar").classList.toggle("open")}
+function showToast(msg){const t=qs("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2500)}
+function openModal(id){qs(id).classList.add("open")} function closeModal(id){qs(id).classList.remove("open")}
+function openOffer(name,price){qs("offerBody").innerHTML=`<div class="recommend"><span class="badge green">VERIFIED BUYER</span><h3>${name}</h3><div class="price">${price}</div><p style="color:var(--muted)">Grade A · 5,000 kg · 62 km · Payment in 2 days</p><hr style="border:0;border-top:1px solid var(--line)"><p><b>Buyer reliability:</b> 96%</p><p><b>Estimated transport:</b> ₹3,500</p><p><b>Estimated net realization:</b> ₹1,31,500</p><div class="actions"><button class="btn primary-btn" onclick="acceptOffer('${name}')">Accept offer</button><button class="btn" onclick="closeModal('offerModal')">Keep comparing</button></div></div>`;openModal("offerModal")}
+async function acceptOffer(name){try{await apiRequest("/api/transactions",{method:"POST",body:JSON.stringify({buyer:name,amount:"₹1,31,500"})});closeModal("offerModal");await loadState();showToast("Offer accepted. Transaction created.");openPage("transactions")}catch(error){showToast("Could not save offer: "+error.message)}}
+function quickSearch(){const c=(qs("quickCrop").value||"Tomato").trim();qs("marketSearch").value=c;qs("marketCrop").value=markets.some(m=>m.crop.toLowerCase()===c.toLowerCase())?markets.find(m=>m.crop.toLowerCase()===c.toLowerCase()).crop:"";openPage("markets");showToast("Showing best options for "+c)}
+function renderDashboardMarkets(){qs("dashboardMarkets").innerHTML=markets.slice(0,3).map(m=>marketCard(m)).join("")}
+function marketCard(m){return `<div class="card market-card"><div class="card-top"><div><span class="badge blue">${m.crop}</span><h3>${m.market}</h3></div><div class="iconbox">�</div></div><div class="market-price">₹${m.price}/kg</div><p><strong>${m.distance} km</strong> away • ${m.arrival} quintal arrivals</p><p>Trend <b style="color:${m.trend>=0?"#0a6a3a":"#c53030"}">${m.trend>=0?"▲":"▼"} ${Math.abs(m.trend)}%</b> • Quality: ${m.quality}</p><button class="btn" onclick="openOffer('Verified Buyer','₹${m.price+2}/kg')" style="width:100%;margin-top:8px">View Offers →</button></div>`}
+function renderMarkets(){let s=(qs("marketSearch").value||"").toLowerCase(),c=qs("marketCrop").value,sort=qs("marketSort").value;let a=markets.filter(m=>(!s||(m.market+" "+m.crop).toLowerCase().includes(s))&&(!c||m.crop===c));a.sort((x,y)=>sort==="price"?y.price-x.price:sort==="distance"?x.distance-y.distance:x.arrival-y.arrival);qs("marketsGrid").innerHTML=a.length?a.map(m=>marketCard(m)).join(""):`<div class="card empty" style="grid-column:1/-1">No market found. Try another crop or market.</div>`}
+function renderBuyers(nearest=false){let s=(qs("buyerSearch").value||"").toLowerCase(),t=qs("buyerType").value;let a=buyers.filter(b=>(!s||(b.name+" "+b.crop+" "+b.type).toLowerCase().includes(s))&&(!t||b.type===t));if(nearest)a.sort((x,y)=>x.distance-y.distance);qs("buyersGrid").innerHTML=a.map(b=>`<div class="card buyer-card"><div class="card-top"><div><span class="badge green">✓ VERIFIED</span><h3>${b.name}</h3><p>${b.type} • Buying ${b.crop}</p></div><div class="iconbox">🤝</div></div><div style="font-size:24px;font-weight:700;color:var(--gov-blue);margin:10px 0">₹${b.price}/kg</div><p>📦 Wants: <b>${b.qty}</b> • 📍 ${b.distance} km away</p><p>📋 Quality needs: <b>${b.quality}</b></p><div style="display:flex;justify-content:space-between;margin:12px 0 6px;font-size:12px"><span>Trust Score</span><b>⭐ ${b.reliability}%</b></div><div class="progress"><span style="width:${b.reliability}%"></span></div><p style="font-size:12px;color:var(--muted)">💰 Pays within: ${b.payment}</p><button class="btn primary-btn" style="width:100%;margin-top:10px" onclick="openOffer('${b.name}','₹${b.price}/kg')">📞 Negotiate & Connect</button></div>`).join("")}
+function openNearestBuyer(){qs("buyerSearch").value="";qs("buyerType").value="";openPage("buyers");renderBuyers(true);showToast("Buyers sorted by nearest distance")}
+function renderLots(){qs("lotsTable").innerHTML=lots.map(l=>`<tr><td><b>${l.id}</b></td><td>${l.crop}</td><td>${l.qty}</td><td><span class="badge green">${l.quality}</span></td><td><b>${l.offer}</b></td><td><span class="badge ${l.status==="Sold"?"blue":l.status==="Bidding"?"amber":"green"}">${l.status}</span></td><td><button class="btn" onclick="showToast('Lot ${l.id} opened')">Open</button></td></tr>`).join("");qs("lotCount").textContent=lots.length}
+function renderTransactions(){qs("transactionsTable").innerHTML=txns.map(t=>`<tr><td><b>${t[0]}</b></td><td>${t[1]}</td><td>${t[2]}</td><td><span class="badge ${t[3].includes("Pending")?"amber":"green"}">${t[3]}</span></td><td>${t[4]}</td><td>${t[5]}</td></tr>`).join("")}
+function renderBuyerDashboard(){qs("buyerLotCount").textContent=lots.filter(l=>l.status!=="Sold").length;qs("buyerBidCount").textContent=bids.length;qs("buyerTxnCount").textContent=txns.length;qs("buyerRecommendedLots").innerHTML=lots.filter(l=>l.status!=="Sold").slice(0,3).map(l=>`<div class="card"><span class="badge blue">${l.crop}</span><h3>${l.id}</h3><p style="color:var(--muted)">${l.qty} • ${l.quality}</p><div class="market-price">${l.offer}</div><button class="btn primary-btn" style="width:100%;margin-top:10px" onclick="openPage('buyerLots')">View lot</button></div>`).join("")||`<div class="card empty">No lots are currently available.</div>`}
+function renderBuyerLots(){const query=(qs("buyerLotSearch").value||"").toLowerCase();const status=qs("buyerLotStatus").value;const available=lots.filter(l=>l.status!=="Sold"&&(!query||(l.id+" "+l.crop).toLowerCase().includes(query))&&(!status||l.status===status));qs("buyerLotsGrid").innerHTML=available.length?available.map(l=>`<div class="card"><span class="badge blue">${l.crop}</span><h3>${l.id}</h3><p>${l.qty} • ${l.quality}</p><div class="market-price">${l.offer}</div><button class="btn primary-btn" style="width:100%;margin-top:10px" onclick="showToast('Bid form opened for ${l.id}')">Place bid</button></div>`).join(""):`<div class="card empty">No matching lots found.</div>`}
+function renderBuyerBids(){qs("buyerBidsTable").innerHTML=bids.length?bids.map(b=>`<tr><td>${b.id}</td><td>${b.lotId}</td><td>₹${b.amount}/kg</td><td>${new Date(b.createdAt).toLocaleDateString()}</td></tr>`).join(""):"<tr><td colspan=4>No bids placed yet.</td></tr>"}
+function renderBuyerTransactions(){qs("buyerTransactionsTable").innerHTML=txns.length?txns.map(t=>`<tr><td>${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td><td>${t[3]}</td><td>${t[4]}</td></tr>`).join(""):"<tr><td colspan=5>No purchases yet.</td></tr>"}
+function adminRows(items, render, columns){return items.length?items.map(render).join(""):"<tr><td colspan="+columns+">No records found</td></tr>"}
+function renderAdmin(){apiRequest("/api/admin/data").then(data=>{qs("adminStats").innerHTML=[["Customer accounts",data.users.length],["Farmer lots",data.lots.length],["Transactions",data.transactions.length],["Bids",data.bids.length],["Grievances",data.grievances.length],["e-NWR requests",data.nwrRequests.length]].map(item=>`<div class="card"><div class="stat-label">${item[0]}</div><div class="stat-value">${item[1]}</div><div class="up">Live database records</div></div>`).join("");qs("adminUsers").innerHTML=adminRows(data.users,item=>`<tr><td>${item.name}</td><td>${item.email}</td><td><span class="badge ${item.role==="admin"?"blue":"green"}">${item.role}</span></td></tr>`,3);qs("adminLots").innerHTML=adminRows(data.lots,item=>`<tr><td>${item.id}</td><td>${item.crop}</td><td>${item.qty}</td><td>${item.status}</td></tr>`,4);qs("adminTransactions").innerHTML=adminRows(data.transactions,item=>`<tr><td>${item[0]}</td><td>${item[1]}</td><td>${item[2]}</td><td>${item[3]}</td></tr>`,4);qs("adminBids").innerHTML=adminRows(data.bids,item=>`<tr><td>${item.id}</td><td>${item.lotId}</td><td>₹${item.amount}/kg</td><td>${new Date(item.createdAt).toLocaleDateString()}</td></tr>`,4);qs("adminAssays").innerHTML=adminRows(data.assays,item=>`<tr><td>${item.id}</td><td>${item.lotId}</td><td>${item.crop}</td><td>${item.grade} (${item.confidence}%)</td></tr>`,4);qs("adminGrievances").innerHTML=adminRows(data.grievances,item=>`<tr><td>${item.id}</td><td>${item.reference}</td><td>${item.type}</td><td>${item.status}</td></tr>`,4);qs("adminFpoLots").innerHTML=adminRows(data.fpoLots,item=>`<tr><td>${item.id}</td><td>${item.lotId||item.crop||"-"}</td><td>${item.status}</td></tr>`,3);qs("adminNwr").innerHTML=adminRows(data.nwrRequests,item=>`<tr><td>${item.id}</td><td>${item.lotId}</td><td>${item.status}</td></tr>`,3)}).catch(error=>showToast(error.message))}
+async function createLot(e){e.preventDefault();const payload={crop:qs("lotCrop").value,qty:qs("lotQty").value,quality:qs("lotQuality").value,price:qs("lotPrice").value,deliveryDate:qs("lotDate").value};try{const lot=await apiRequest("/api/lots",{method:"POST",body:JSON.stringify(payload)});lots.unshift(lot);localStorage.setItem("kl_lots",JSON.stringify(lots));closeModal("lotModal");renderLots();showToast(lot.id+" published. Buyers can now submit offers.");openPage("lots")}catch(error){showToast("Could not publish lot: "+error.message)}}
+async function submitAssay(e){e.preventDefault();const imageCount=qs("assayImages").files.length;try{await apiRequest("/api/assays",{method:"POST",body:JSON.stringify({lotId:qs("assayLot").value,crop:qs("assayCrop").value,notes:qs("assayNotes").value,imageCount})});showToast("AI pre-assessment saved: Grade A, 91% confidence");e.target.reset();qs("assayLot").value="LOT-1042"}catch(error){showToast("Could not save quality check: "+error.message)}}
+async function placeBid(e){e.preventDefault();const amount=Number(qs("bidAmount").value);try{await apiRequest("/api/bids",{method:"POST",body:JSON.stringify({lotId:"LOT-1042",amount})});showToast("Bid of ₹"+amount+"/kg saved");e.target.reset()}catch(error){showToast("Could not save bid: "+error.message)}}
+async function aggregateLot(){try{const lot=await apiRequest("/api/fpo-lots",{method:"POST",body:JSON.stringify({})});lots.unshift(lot);localStorage.setItem("kl_lots",JSON.stringify(lots));showToast("FPO aggregation lot formed for 12 farmers");qs("lotCount").textContent=lots.length}catch(error){showToast("Could not form group lot: "+error.message)}}
+function calculateProfit(){const quantity=Number(qs("calcQty").value)||0;const price=Number(qs("calcPrice").value)||0;const transport=Number(qs("calcTransport").value)||0;const storage=Number(qs("calcStorage").value)||0;qs("netProfit").textContent="₹"+Math.max(0,quantity*price-transport-storage).toLocaleString("en-IN")}
+async function submitGrievance(e){e.preventDefault();const evidence=qs("gEvidence").files[0]?.name||"No attachment";try{const grievance=await apiRequest("/api/grievances",{method:"POST",body:JSON.stringify({reference:qs("gId").value,type:qs("gType").value,description:qs("gDesc").value,evidence})});qs("cases").insertAdjacentHTML("afterbegin",`<div class="card" style="margin-top:10px"><span class="badge amber">${grievance.status}</span><b style="display:block;margin-top:8px">${grievance.id} · ${grievance.type}</b><small style="color:var(--muted)">Linked to ${grievance.reference} · Evidence: ${grievance.evidence} · Submitted just now</small></div>`);e.target.reset();showToast("Evidence-linked grievance submitted")}catch(error){showToast("Could not submit grievance: "+error.message)}}
+async function requestNwr(){try{const request=await apiRequest("/api/nwr",{method:"POST",body:JSON.stringify({lotId:"LOT-1042"})});showToast("e-NWR request "+request.id+" created")}catch(error){showToast("Could not create e-NWR request: "+error.message)}}
+async function saveProfile(){const profile={name:qs("profileName").value,accountType:qs("profileType").value,district:qs("profileDistrict").value,state:qs("profileState").value,crops:qs("profileCrops").value};try{await apiRequest("/api/profile",{method:"PUT",body:JSON.stringify(profile)});showToast("Profile saved successfully")}catch(error){showToast("Could not save profile: "+error.message)}}
+function setLanguage(v){if(v==="hi"){qs("heroTitle").textContent="🌾 स्मार्ट बेचें, ज्यादा कमाएँ";qs("heroSub").textContent="मंडी भाव तुलना करें • सत्यापित खरीदार खोजें • गुणवत्ता जांच करें • परिवहन व्यवस्था करें • सुरक्षित लेनदेन पूरा करें"}else{qs("heroTitle").textContent="🌾 Sell Smart, Earn More";qs("heroSub").textContent="Compare mandi prices • Connect with verified buyers • Check quality standards • Arrange transport • Complete transactions safely"}}
+renderDashboardMarkets();renderMarkets();renderBuyers();renderLots();renderTransactions();bootAuth();
+</script>
+</body>
+</html

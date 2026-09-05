@@ -1,0 +1,75 @@
+{
+  "transactions": [
+    [
+      "TXN-54A463A1",
+      "GreenHarvest Foods",
+      "₹1,31,500",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-420D82EC",
+      "Verified Buyer",
+      "₹1,31,500",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-625A201C",
+      "Verified Buyer",
+      "₹1,31,500",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-2D7A7898",
+      "GreenHarvest Foods",
+      "₹1,31,500",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-B8FBF93A",
+      "GreenHarvest Foods",
+      "₹1,31,500",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-6D8C43A9",
+      "Verified Buyer",
+      "₹1,31,500",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-1002",
+      "GreenHarvest Foods",
+      "₹1,35,000",
+      "Pending",
+      "Pickup scheduled",
+      "Today"
+    ],
+    [
+      "TXN-0998",
+      "CityMart Institutions",
+      "₹98,000",
+      "Paid ✓",
+      "Delivered",
+      "18 Aug"
+    ]
+  ],
+  "nwrRequests": [
+    {
+      "id": "NWR-618BA52D",
+      "lotId": "LOT-1042",
+      "status": "REQUESTED"
+    }
+  ]
+}
