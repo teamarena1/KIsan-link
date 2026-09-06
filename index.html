@@ -185,8 +185,22 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.42;ba
 .quick-actions .quick-icon{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#e6f1df;color:var(--gov-blue);font-weight:900;font-size:18px;flex:0 0 auto}
 .quick-actions b{display:block;font-size:12px}.quick-actions small{display:block;color:var(--muted);font-size:10px;margin-top:2px}.quick-actions strong{margin-left:auto;color:var(--gov-accent);font-size:18px}
 .market-section-head{margin-top:24px}.market-section-grid{margin-bottom:26px}
-@media(max-width:1050px){.hero{padding-right:36%}.hero-photo{left:62%}.quick-actions{grid-template-columns:1fr}}
+@media(max-width:1050px){.hero{padding-right:36%}.hero-photo{left:62%}.quick-actions{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
 @media(max-width:760px){.hero{padding-right:22px}.hero-photo{inset:0;opacity:.24}.hero-photo:after{background:linear-gradient(90deg,#174e3d 0%,rgba(23,78,61,.62) 100%)}.quick-actions{gap:9px}.quick-actions button{padding:11px 12px}}
+
+/* Header collision guardrails */
+.topbar > div:first-child{min-width:0;flex:1}
+.top-actions{min-width:0;flex-shrink:0}
+.location{min-width:0;white-space:nowrap;overflow:hidden}
+.location span,.location b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.profile{min-width:0}.profile span{max-width:150px;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:900px){
+ .topbar{padding-left:20px;padding-right:20px}.location span{display:none}.location b{max-width:135px}
+ .profile span{max-width:110px}
+}
+@media(max-width:760px){
+ .topbar > div:first-child{flex:0 0 auto;width:auto}.top-actions{margin-left:auto}.location{display:none}.profile .avatar{display:none}.profile span{display:none}.profile{gap:0}.two{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
