@@ -75,6 +75,70 @@ table{width:100%;border-collapse:collapse}th,td{padding:12px 10px;border-bottom:
 @media(max-width:760px){
  .sidebar{transform:translateX(-100%);transition:.25s}.sidebar.open{transform:translateX(0)}.main{margin-left:0;width:100%}.mobile-menu{display:block}.topbar{padding:0 15px}.content{padding:15px}.stats,.market-grid,.buyer-grid,.three,.form-grid{grid-template-columns:1fr}.hero h1{font-size:20px}.searchbox{flex-direction:column}.searchbox .primary{height:44px}.top-actions .pill{display:none}
 }
+
+/* Farmer-first visual system */
+:root{
+  --gov-blue:#176b4d;
+  --gov-deep:#103f32;
+  --gov-accent:#e3a52f;
+  --bg:#f4f7f1;
+  --card:#fffef9;
+  --ink:#18352b;
+  --muted:#64756b;
+  --line:#dce7dc;
+  --shadow:0 12px 30px rgba(22,67,47,.08);
+}
+body{
+  font-family:"Trebuchet MS","Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(227,165,47,.12), transparent 28rem),
+    linear-gradient(135deg,#f8faf5 0%,#eef5ed 100%);
+  line-height:1.5;
+}
+.gov-banner{padding:8px 24px;background:var(--gov-deep);border-bottom:0;color:#fff}
+.gov-title{color:#f7d98b;font-size:13px;letter-spacing:.02em}
+.gov-flag{opacity:.9}
+.sidebar{background:var(--gov-deep);border-right:0;padding:24px 16px;box-shadow:8px 0 28px rgba(16,63,50,.1)}
+.brand{color:#fff;padding:8px 10px 24px;letter-spacing:.01em}
+.brand small{color:#b8d3c0!important}
+.brand-mark{border-color:var(--gov-accent);color:var(--gov-accent);background:rgba(227,165,47,.1);border-radius:12px}
+.nav{gap:4px}
+.nav button{color:#b9d0c2;padding:11px 12px;border-radius:9px;border-left:0;font-size:13px}
+.nav button:hover,.nav button.active{background:rgba(255,255,255,.11);color:#fff;border-left:0;font-weight:700}
+.nav button.active{box-shadow:inset 3px 0 var(--gov-accent)}
+.side-note{background:rgba(255,255,255,.08);color:#c5d9ca;border-color:rgba(255,255,255,.12);border-radius:10px}
+.main{background:transparent}
+.topbar{height:78px;background:rgba(255,254,249,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.location{color:var(--muted)}.location b{color:var(--ink)}
+.pill{border-color:var(--line);border-radius:9px;background:#fffef9;color:var(--ink)}
+.avatar{background:#e2f0df;color:var(--gov-blue)}
+.content{padding:32px 30px 48px}
+.hero{background:linear-gradient(118deg,#155941 0%,#2e8058 62%,#6e9a48 100%);border-radius:18px;padding:32px;box-shadow:0 18px 38px rgba(23,107,77,.18)}
+.hero:after{content:"";position:absolute;width:210px;height:210px;right:-40px;bottom:-90px;border:26px solid rgba(255,255,255,.12);border-radius:50%}
+.hero h1{font-size:32px;letter-spacing:-.02em;max-width:620px}
+.hero p{max-width:670px;color:#e7f2e6}
+.searchbox{position:relative;z-index:1;margin-top:20px}.searchbox input{border:0;border-radius:10px;padding:14px 15px;box-shadow:0 8px 18px rgba(11,55,35,.12)}
+.primary{background:var(--gov-accent);color:#3c2b08;border-radius:10px;padding:12px 17px}
+.grid{gap:18px}.stats{margin:22px 0}.card{border-color:var(--line);border-radius:14px;padding:19px;box-shadow:var(--shadow)}
+.stats .card{position:relative;overflow:hidden}.stats .card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gov-accent)}
+.stat-label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}.stat-value{color:var(--gov-deep);font-size:25px}
+.section-head{margin:28px 0 12px}.section-head h2{color:var(--gov-deep);font-size:19px;letter-spacing:-.01em}
+.recommend{border-color:#cfe3c8;background:linear-gradient(145deg,#fffef9,#f2f8ef);border-radius:12px}
+.badge{border-radius:999px;padding:5px 9px}.price,.market-price{color:var(--gov-blue)}
+.btn{border-color:#cbdccc;border-radius:9px;padding:10px 13px;color:var(--gov-blue);background:#fffef9}.btn:hover{border-color:var(--gov-blue);background:#eef7ed}.btn.primary-btn{background:var(--gov-blue);color:#fff;border-color:var(--gov-blue)}
+.filters input,.filters select,.form input,.form select,.form textarea{border-color:#ccdccc;border-radius:9px;padding:11px 12px;background:#fffef9}
+th{background:#eef6eb;color:var(--gov-deep)}
+.market-card h3,.buyer-card h3{color:var(--gov-deep)}
+.iconbox{border-radius:11px;background:#edf6e9;color:var(--gov-blue)}
+.info-box{background:#edf6eb;border-color:#d2e6ce}.success-box{background:#eff8e9;border-color:#cde4c5}
+.modal-box,.login-box{border-radius:16px}.login-screen{background:linear-gradient(135deg,#edf5e9,#fffdf4)}.login-box{border-top:5px solid var(--gov-accent);box-shadow:0 18px 45px rgba(20,67,47,.12)}.login-box .brand{color:var(--gov-deep)}.login-box .brand small{color:var(--muted)!important}
+.login-box h1{color:var(--gov-deep)}.auth-mode button{border-radius:8px}.auth-mode button.active{background:var(--gov-blue)}
+.chat-toggle{background:var(--gov-blue);box-shadow:0 10px 24px rgba(23,107,77,.25)}
+.chat-panel{border-color:var(--line);border-radius:14px}.chat-head{background:var(--gov-deep)}
+.mobile-menu{border-radius:8px;color:var(--gov-deep)}
+@media(max-width:760px){
+ .gov-banner{padding:8px 15px}.content{padding:20px 15px 36px}.hero{padding:24px 20px;border-radius:14px}.hero h1{font-size:26px}.topbar{height:68px}
+}
 </style>
 </head>
 <body>
