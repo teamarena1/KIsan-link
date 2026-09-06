@@ -139,6 +139,39 @@ th{background:#eef6eb;color:var(--gov-deep)}
 @media(max-width:760px){
  .gov-banner{padding:8px 15px}.content{padding:20px 15px 36px}.hero{padding:24px 20px;border-radius:14px}.hero h1{font-size:26px}.topbar{height:68px}
 }
+
+/* Field operations redesign */
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.42;background-image:linear-gradient(rgba(23,107,77,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(23,107,77,.035) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,black,transparent 78%);z-index:-1}
+.gov-banner{height:40px;padding:8px 30px;box-shadow:0 2px 0 rgba(227,165,47,.8)}
+.gov-title:before{content:"FIELD OPERATIONS  /  ";color:#9fc5a8;font-size:10px;font-weight:800;letter-spacing:.12em}
+.sidebar{width:278px;inset:40px auto 0 0;padding:28px 18px;overflow-y:auto}
+.brand{font-size:20px;padding:6px 12px 30px}.brand-mark{width:44px;height:44px;font-size:20px;box-shadow:0 0 0 5px rgba(227,165,47,.08)}
+.nav button{min-height:44px;font-size:14px}.nav button span{flex:1}.nav button.active{background:linear-gradient(90deg,rgba(255,255,255,.15),rgba(255,255,255,.04));box-shadow:inset 4px 0 var(--gov-accent),0 7px 16px rgba(0,0,0,.08)}
+.side-note{position:static;margin:24px 0 4px;padding:15px;line-height:1.55}.side-note b{display:block;color:#f7d98b;margin-bottom:3px}
+.main{margin-left:278px;width:calc(100% - 278px)}
+.topbar{height:82px;padding:0 34px;border-bottom-color:rgba(220,231,220,.8)}
+.location{font-size:13px}.location:before{content:"LIVE";background:#e5f3df;color:#176b4d;border-radius:999px;padding:4px 8px;font-size:9px;font-weight:900;letter-spacing:.1em}
+.top-actions{gap:12px}.profile{padding-left:12px;border-left:1px solid var(--line);white-space:nowrap}.profile .pill:last-child{font-size:12px}
+.content{max-width:1440px;padding:38px 38px 64px}
+.hero{min-height:270px;padding:38px 42px;border-radius:24px;box-shadow:0 24px 50px rgba(23,107,77,.2);background:linear-gradient(115deg,#103f32 0%,#176b4d 48%,#557f3d 100%)}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 25%,rgba(247,217,139,.3) 0 2px,transparent 3px),radial-gradient(circle at 88% 58%,rgba(247,217,139,.22) 0 3px,transparent 4px),linear-gradient(125deg,transparent 55%,rgba(255,255,255,.08) 55% 56%,transparent 56%);background-size:44px 44px,64px 64px,100% 100%;opacity:.6}
+.hero:after{width:270px;height:270px;right:-70px;bottom:-145px;border-width:34px;border-color:rgba(247,217,139,.18);box-shadow:0 0 0 18px rgba(255,255,255,.05),0 0 0 42px rgba(255,255,255,.04)}
+.hero-kicker{position:relative;z-index:1;display:inline-flex;color:#f7d98b;font-size:10px;font-weight:900;letter-spacing:.16em;margin-bottom:15px}
+.hero-kicker:before{content:"";width:22px;height:2px;background:var(--gov-accent);margin:7px 8px 0 0}
+.hero h1{position:relative;z-index:1;font-size:38px;line-height:1.08;max-width:700px;margin-bottom:12px}.hero p{position:relative;z-index:1;font-size:15px;max-width:680px}
+.searchbox{max-width:760px;margin-top:25px}.searchbox input{height:52px;padding-left:18px}.searchbox .primary{height:52px;padding:0 20px;font-size:13px;box-shadow:0 8px 16px rgba(58,42,8,.18)}
+.stats{gap:14px;margin:26px 0}.stats .card{padding:18px 18px 16px;min-height:154px}.stats .card:nth-child(2):before{background:#7aaf4a}.stats .card:nth-child(3):before{background:#d87d43}.stats .card:nth-child(4):before{background:#6d8fcb}.stats .card .btn{margin-top:12px!important;font-size:12px}
+.stat-label{font-size:10px;letter-spacing:.12em}.stat-value{font-size:28px;margin:9px 0 1px}.up{font-size:11px}
+.section-head{margin:34px 0 14px}.section-head h2{font-size:20px}.section-head span{font-size:12px;background:#e7f1e3;padding:5px 9px;border-radius:999px}
+.two{grid-template-columns:1.45fr 1fr}.card{box-shadow:0 10px 28px rgba(22,67,47,.06)}
+.recommend{padding:20px}.rec-title h3{font-size:19px}.price{font-size:28px}.recommend .info-box{margin-top:18px}
+.chart{height:250px;padding-top:20px}.bar{background:linear-gradient(180deg,#e3a52f,#176b4d);box-shadow:0 5px 10px rgba(23,107,77,.1)}
+.market-grid,.buyer-grid{gap:14px}.market-card,.buyer-card{transition:transform .2s ease,box-shadow .2s ease}.market-card:hover,.buyer-card:hover{transform:translateY(-4px);box-shadow:0 15px 30px rgba(22,67,47,.12)}
+.login-screen{background:#103f32;overflow:hidden}.login-screen:before{content:"किसान\A KISANLINK";white-space:pre;position:absolute;left:8vw;top:18vh;color:#f7d98b;font-size:clamp(34px,5vw,78px);font-weight:900;line-height:.92;letter-spacing:-.06em;opacity:.92}.login-screen:after{content:"Market prices  •  Trusted buyers  •  Better harvest income";position:absolute;left:8vw;top:38vh;color:#b8d3c0;font-size:14px;letter-spacing:.08em}.login-box{position:relative;margin-left:42vw;width:min(440px,100%);z-index:1;border:0;border-top:0;padding:34px;background:#fffef9;box-shadow:0 24px 70px rgba(0,0,0,.28)}.login-box:before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--gov-accent)}.login-box .brand{padding-bottom:20px}.login-box h1{font-size:29px}.login-box input,.login-box select{padding:13px;border-radius:9px;border:1px solid var(--line);background:#fff}
+@media(max-width:1050px){.sidebar{width:250px}.main{margin-left:250px;width:calc(100% - 250px)}.content{padding:28px 24px}.login-screen:before{left:5vw}.login-screen:after{left:5vw}.login-box{margin-left:34vw}}
+@media(max-width:760px){
+ .gov-banner{height:38px}.sidebar{width:278px}.main{margin-left:0;width:100%}.topbar{padding:0 15px}.location:before{display:none}.profile{border-left:0;padding-left:0}.profile span{display:none}.content{padding:20px 15px 40px}.hero{min-height:0;padding:28px 22px}.hero h1{font-size:30px}.hero-kicker{font-size:9px}.searchbox .primary{width:100%}.section-head span{display:none}.login-screen{align-items:end;padding:0}.login-screen:before{left:24px;top:8vh;font-size:42px}.login-screen:after{left:25px;top:23vh;font-size:11px}.login-box{margin:0;width:100%;border-radius:22px 22px 0 0;padding:28px 24px 32px}.login-box:before{height:5px;width:100%;bottom:auto}.top-actions .pill{display:none}
+}
 </style>
 </head>
 <body>
@@ -198,6 +231,7 @@ th{background:#eef6eb;color:var(--gov-deep)}
 <div class="content">
 <section class="page active" id="dashboard">
   <div class="hero">
+    <div class="hero-kicker">FIELD INTELLIGENCE • NAGPUR REGION</div>
     <h1 id="heroTitle">Sell smarter. Earn better.</h1>
     <p id="heroSub">One place to compare mandi prices, verified buyers, quality requirements, transport and storage — then get a smart selling recommendation.</p>
     <div class="searchbox">
