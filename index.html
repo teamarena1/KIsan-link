@@ -172,6 +172,21 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.42;ba
 @media(max-width:760px){
  .gov-banner{height:38px}.sidebar{width:278px}.main{margin-left:0;width:100%}.topbar{padding:0 15px}.location:before{display:none}.profile{border-left:0;padding-left:0}.profile span{display:none}.content{padding:20px 15px 40px}.hero{min-height:0;padding:28px 22px}.hero h1{font-size:30px}.hero-kicker{font-size:9px}.searchbox .primary{width:100%}.section-head span{display:none}.login-screen{align-items:end;padding:0}.login-screen:before{left:24px;top:8vh;font-size:42px}.login-screen:after{left:25px;top:23vh;font-size:11px}.login-box{margin:0;width:100%;border-radius:22px 22px 0 0;padding:28px 24px 32px}.login-box:before{height:5px;width:100%;bottom:auto}.top-actions .pill{display:none}
 }
+
+/* Visual assets and a faster farmer scan path */
+.hero{padding-right:42%;background:#174e3d}
+.hero-photo{position:absolute;inset:0 0 0 54%;overflow:hidden;opacity:.82}
+.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#174e3d 0%,rgba(23,78,61,.76) 20%,rgba(23,78,61,.1) 100%)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.9) contrast(1.05)}
+.hero > :not(.hero-photo){position:relative;z-index:2}
+.quick-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 4px}
+.quick-actions button{display:flex;align-items:center;gap:11px;text-align:left;padding:13px 15px;border:1px solid #d4e3d0;border-radius:13px;background:rgba(255,254,249,.9);color:var(--ink);box-shadow:0 8px 20px rgba(22,67,47,.05);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.quick-actions button:hover{transform:translateY(-3px);border-color:#a5c594;box-shadow:0 12px 24px rgba(22,67,47,.1)}
+.quick-actions .quick-icon{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#e6f1df;color:var(--gov-blue);font-weight:900;font-size:18px;flex:0 0 auto}
+.quick-actions b{display:block;font-size:12px}.quick-actions small{display:block;color:var(--muted);font-size:10px;margin-top:2px}.quick-actions strong{margin-left:auto;color:var(--gov-accent);font-size:18px}
+.market-section-head{margin-top:24px}.market-section-grid{margin-bottom:26px}
+@media(max-width:1050px){.hero{padding-right:36%}.hero-photo{left:62%}.quick-actions{grid-template-columns:1fr}}
+@media(max-width:760px){.hero{padding-right:22px}.hero-photo{inset:0;opacity:.24}.hero-photo:after{background:linear-gradient(90deg,#174e3d 0%,rgba(23,78,61,.62) 100%)}.quick-actions{gap:9px}.quick-actions button{padding:11px 12px}}
 </style>
 </head>
 <body>
@@ -231,6 +246,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.42;ba
 <div class="content">
 <section class="page active" id="dashboard">
   <div class="hero">
+    <div class="hero-photo"><img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=900&q=85" alt="Farmer walking through a green crop field" loading="eager"></div>
     <div class="hero-kicker">FIELD INTELLIGENCE • NAGPUR REGION</div>
     <h1 id="heroTitle">Sell smarter. Earn better.</h1>
     <p id="heroSub">One place to compare mandi prices, verified buyers, quality requirements, transport and storage — then get a smart selling recommendation.</p>
@@ -247,6 +263,15 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.42;ba
     <div class="card"><div class="stat-label">Potential extra value</div><div class="stat-value">₹18,400</div><div class="up">AI estimate for your lot</div><button class="btn" style="margin-top:10px" onclick="openPage('logistics')">Get tips</button></div>
     <div class="card"><div class="stat-label">Active lots</div><div class="stat-value" id="lotCount">3</div><div class="up">2 awaiting offers</div></div>
   </div>
+
+  <div class="quick-actions" aria-label="Farmer shortcuts">
+    <button onclick="openPage('markets')"><span class="quick-icon">₹</span><span><b>Check today's rates</b><small>Compare nearby mandis</small></span><strong>→</strong></button>
+    <button onclick="openPage('lots')"><span class="quick-icon">+</span><span><b>List your produce</b><small>Create a new lot in minutes</small></span><strong>→</strong></button>
+    <button onclick="openPage('quality')"><span class="quick-icon">✓</span><span><b>Improve your grade</b><small>Run a quality assessment</small></span><strong>→</strong></button>
+  </div>
+
+  <div class="section-head market-section-head"><h2>📍 Market Prices Nearby</h2><span>Compare local mandis</span></div>
+  <div class="grid market-grid market-section-grid" id="dashboardMarkets"></div>
 
   <div class="grid two">
     <div class="card">
@@ -270,9 +295,6 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.42;ba
       <div class="success-box">🤖 <b>AI Forecast:</b> Price may reach ₹28–29/kg in 3 days if supply remains same.</div>
     </div>
   </div>
-
-  <div class="section-head"><h2>📍 Market Prices Nearby</h2><span>Compare local mandis</span></div>
-  <div class="grid market-grid" id="dashboardMarkets"></div>
 
   <div class="section-head"><h2>💡 Key Factors for Better Earnings</h2><span>Things that affect your profit</span></div>
   <div class="grid three">
